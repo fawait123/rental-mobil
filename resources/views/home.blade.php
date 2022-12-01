@@ -1098,7 +1098,8 @@
                                                 <span data-feather="bell"></span> Help</a>
                                         </li>
                                     </ul>
-                                    <a href="" class="nav-author__signout">
+                                    <a href="" data-toggle="modal" data-target="#modal-info-confirmed"
+                                        class="nav-author__signout">
                                         <span data-feather="log-out"></span> Sign Out</a>
                                 </div>
                             </div>
@@ -4288,7 +4289,36 @@
         </span>
     </div>
     <div class="overlay-dark-sidebar"></div>
+    {{-- modal --}}
+    <div class="modal-info-confirmed modal fade show" id="modal-info-confirmed" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-info" role="document">
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modal-info-body d-flex">
+                            <div class="modal-info-icon warning">
+                                <span data-feather="info"></span>
+                            </div>
 
+                            <div class="modal-info-text">
+                                <h6>Apakah anda yakin ingin keluar ? </h6>
+                                <p>Keluar Sekarang.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light btn-outlined btn-sm"
+                            data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-info btn-sm">Ok</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- ends: .modal-info-confirmed -->
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDduF2tLXicDEPDMAtC6-NLOekX0A5vlnY"></script>
     <!-- inject:js-->
     <script src="{{ asset('assets/backend/assets/vendor_assets') }}/js/jquery/jquery-3.5.1.min.js"></script>
