@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix'=>'masterdata','middleware'=>'auth'],function(){
     Route::resource('brand',BrandController::class);
     Route::resource('type',TypeController::class);
+    Route::resource('user',UserController::class);
+    Route::resource('company',CompanyController::class);
 });
