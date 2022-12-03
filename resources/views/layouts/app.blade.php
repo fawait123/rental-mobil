@@ -63,6 +63,12 @@
     <!-- endinject -->
 
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/backend/img') }}/favicon.png">
+    <style>
+        iframe {
+            width: 100%;
+            height: 200;
+        }
+    </style>
     @livewireStyles
 </head>
 
@@ -361,7 +367,7 @@
         </div>
     </div>
     <!-- ends: .modal-info-confirmed -->
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDduF2tLXicDEPDMAtC6-NLOekX0A5vlnY"></script>
+    {{-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDduF2tLXicDEPDMAtC6-NLOekX0A5vlnY"></script> --}}
     <!-- inject:js-->
     <script src="{{ asset('assets/backend/assets/vendor_assets') }}/js/jquery/jquery-3.5.1.min.js"></script>
     <script src="{{ asset('assets/backend/assets/vendor_assets') }}/js/jquery/jquery-ui.js"></script>
