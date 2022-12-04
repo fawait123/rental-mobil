@@ -30,6 +30,20 @@
                 <span class="menu-text">User</span>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.company') }}"
+                class="{{ Request::is('masterdata/company*') || Request::is('masterdata/admin/company*') ? 'active' : '' }}">
+                <span data-feather="server" class="nav-icon"></span>
+                <span class="menu-text">Company</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.list-car') }}"
+                class="{{ Request::is('masterdata/list-car*') || Request::is('masterdata/admin/list-car*') ? 'active' : '' }}">
+                <span data-feather="list" class="nav-icon"></span>
+                <span class="menu-text">List Car</span>
+            </a>
+        </li>
     @endif
     @if (auth()->user()->role == 'retail')
         <li>
