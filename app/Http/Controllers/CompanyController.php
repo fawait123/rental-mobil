@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Brand;
+use App\Models\Type;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -15,8 +18,12 @@ class CompanyController extends Controller
     public function index()
     {
         $company = Company::with('owner')->where('user_id',auth()->user()->id)->first();
+        $brand = Brand::get();
+        $type = Type::get();
         return view('pages.masterdata.company.index',[
-            'company'=>$company
+            'company'=>$company,
+            'count_car'=>Property::where('company_id',$company ? $company->id : null)->count(),
+            'property'=>Property::with(['car.brand','car.type'])->where('company_id',$company ? $company->id : null)->get()
         ]);
     }
 
