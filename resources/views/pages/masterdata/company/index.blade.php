@@ -23,20 +23,12 @@
                                 </div>
                             </div>
 
-                            <div class="card-footer mt-20 pt-20 pb-20 px-0">
+                            <div
+                                class="card-footer mt-20 pt-20 pb-20 px-0 d-flex justify-content-center align-items-center">
                                 <div class="profile-overview d-flex justify-content-between flex-wrap">
-                                    <div class="po-details">
-                                        <h6 class="po-details__title pb-1">$72,572</h6>
-                                        <span class="po-details__sTitle">Total Revenue</span>
-                                    </div>
-                                    <div class="po-details">
-                                        <h6 class="po-details__title pb-1">3,257</h6>
-                                        <span class="po-details__sTitle">order</span>
-                                    </div>
-                                    <div class="po-details">
-                                        <h6 class="po-details__title pb-1">74</h6>
-                                        <span class="po-details__sTitle">Products</span>
-                                    </div>
+                                    <a href="{{ route('property.index') }}"
+                                        class="btn btn-primary btn-sm text-center">Manage Your
+                                        Property</a>
                                 </div>
                             </div>
                         </div>
@@ -142,12 +134,8 @@
                                     role="tab" aria-controls="ap-overview" aria-selected="true">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="car-tab" data-toggle="pill" href="#addCar" role="tab"
-                                    aria-controls="addCar" aria-selected="true">Add Car</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="timeline-tab" data-toggle="pill" href="#property"
-                                    role="tab" aria-controls="timeline" aria-selected="false">Property</a>
+                                <a class="nav-link" id="timeline-tab" data-toggle="pill" href="#property" role="tab"
+                                    aria-controls="timeline" aria-selected="false">Property</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="activity-tab" data-toggle="pill" href="#report" role="tab"
@@ -161,7 +149,6 @@
                     @include('pages.masterdata.company.dashboard')
                     @include('pages.masterdata.company.property')
                     @include('pages.masterdata.company.report')
-                    @include('pages.masterdata.company.add-car')
                 </div>
             </div>
         </div>

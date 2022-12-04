@@ -5,6 +5,7 @@ use App\Http\Controllers\TypeController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\PropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,7 @@ Route::group(['prefix'=>'masterdata','middleware'=>'auth'],function(){
     Route::resource('type',TypeController::class);
     Route::resource('user',UserController::class);
     Route::resource('company',CompanyController::class);
+    Route::group(['prefix'=>'companies'],function(){
+        Route::resource('property',PropertyController::class);
+    });
 });

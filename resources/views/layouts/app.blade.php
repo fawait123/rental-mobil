@@ -68,6 +68,10 @@
             width: 100%;
             height: 200;
         }
+
+        div.error span {
+            color: red
+        }
     </style>
     @livewireStyles
 </head>
@@ -414,6 +418,7 @@
     <script src="{{ asset('assets/backend/assets/theme_assets') }}/js/jvectormap-init.js"></script>
     <script src="{{ asset('assets/backend/assets/theme_assets') }}/js/leaflet-init.js"></script>
     <script src="{{ asset('assets/backend/assets/theme_assets') }}/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
     <!-- endinject-->
 
 
