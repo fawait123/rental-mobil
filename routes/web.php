@@ -7,21 +7,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\AdminCompanyController;
+use App\Http\Controllers\WelcomeController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::group(['prefix'=>'/'],function(){
+    Route::get('/',[WelcomeController::class,'index'])->name('welcome');
+    Route::get('products',[WelcomeController::class, 'product'])->name('product');
+    Route::get('contact',[WelcomeController::class, 'contact'])->name('contact');
+});
 
 Auth::routes();
 
