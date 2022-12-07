@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
+    <style>
+        .has-errors {
+            border-color: red;
+        }
+    </style>
 </head>
 
 <body>
