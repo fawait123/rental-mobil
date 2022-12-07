@@ -206,24 +206,24 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="{{ asset('assets/frontend/img') }}/banner/1.jpg"
-                                    alt="Banner Image"></a>
+                            <a href="{{ asset('assets/frontend/banner/1.jpg') }}" target="blank"><img
+                                    src="{{ asset('assets/frontend/banner/1.jpg') }}" alt="Banner Image"></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="{{ asset('assets/frontend/img') }}/banner/2.jpg"
-                                    alt="Banner Image"></a>
+                            <a href="{{ asset('assets/frontend/banner/2.jpg') }}" target="blank"><img
+                                    src="{{ asset('assets/frontend/banner/2.jpg') }}" alt="Banner Image"></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="{{ asset('assets/frontend/img') }}/banner/3.jpg"
-                                    alt="Banner Image"></a>
+                            <a href="{{ asset('assets/frontend/banner/3.jpg') }}" target="blank"><img
+                                    src="{{ asset('assets/frontend/banner/3.jpg') }}" alt="Banner Image"></a>
                         </div>
                     </div>
                 </div>
@@ -240,15 +240,16 @@
                 <div class="col-md-6">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="{{ asset('assets/frontend/img') }}/banner/6.jpg"
-                                    alt="Banner Image"></a>
+                            <a href="{{ asset('assets/frontend/banner/left.jpg') }}" target="blank"><img
+                                    src="{{ asset('assets/frontend/banner/left.jpg') }}" alt="Banner Image"></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="{{ asset('assets/frontend/img') }}/banner/7.jpg"
+                            <a href="{{ asset('assets/frontend/banner/right.jpg') }}" target="blank"><img
+                                    src="{{ asset('assets/frontend/banner/right.jpg') }}" width="100%"
                                     alt="Banner Image"></a>
                         </div>
                     </div>
@@ -267,8 +268,8 @@
                 <div class="col-md-12">
                     <div class="ltn__banner-item">
                         <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="{{ asset('assets/frontend/img') }}/banner/10.jpg"
-                                    alt="Banner Image"></a>
+                            <a href="{{ asset('assets/frontend/banner/bottom.jpg') }}" target="blank"><img
+                                    src="{{ asset('assets/frontend/banner/bottom.jpg') }}" alt="Banner Image"></a>
                         </div>
                     </div>
                 </div>

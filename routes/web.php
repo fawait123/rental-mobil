@@ -19,6 +19,7 @@ Route::group(['prefix'=>'/'],function(){
     Route::get('customer/register',[WelcomeController::class, 'register'])->name('frontend.register');
     // auth
     Route::post('customer/register',[AuthController::class, 'actionRegister'])->name('frontend.register.store');
+    Route::post('customer/login',[AuthController::class, 'actionLogin'])->name('frontend.register.action');
 });
 
 Auth::routes();
