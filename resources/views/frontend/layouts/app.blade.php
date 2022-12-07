@@ -44,7 +44,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="site-logo">
-                                <a href="index.html"><img src="{{ asset('assets/frontend/img') }}/logo.png"
+                                <a href="{{ route('welcome') }}"><img src="{{ asset('assets/frontend/img') }}/logo.png"
                                         alt="Logo"></a>
                             </div>
                         </div>
@@ -62,13 +62,14 @@
                                 </div>
                                 <!-- header-search-2 -->
                                 <div class="header-search-2">
-                                    <form id="#123" method="get" action="#">
+                                    {{-- <form id="#123" method="get" action="#">
                                         <input type="text" name="search" value=""
                                             placeholder="Search here..." />
                                         <button type="submit">
                                             <span><i class="icon-magnifier"></i></span>
                                         </button>
-                                    </form>
+                                    </form> --}}
+                                    {{-- Welcome, --}}
                                 </div>
                             </div>
                         </div>
@@ -132,19 +133,21 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li>
-                                        <!-- mini-cart 2 -->
-                                        <div class="mini-cart-icon mini-cart-icon-2">
-                                            <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
-                                                <span class="mini-cart-icon">
-                                                    <i class="icon-handbag"></i>
-                                                    <sup>2</sup>
-                                                </span>
-                                                <h6><span>Your Cart</span> <span
-                                                        class="ltn__secondary-color">$89.25</span></h6>
-                                            </a>
-                                        </div>
-                                    </li>
+                                    @if (auth()->user())
+                                        <li>
+                                            <!-- mini-cart 2 -->
+                                            <div class="mini-cart-icon mini-cart-icon-2">
+                                                <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
+                                                    <span class="mini-cart-icon">
+                                                        <i class="icon-handbag"></i>
+                                                        <sup>2</sup>
+                                                    </span>
+                                                    <h6><span>Welcome,</span> <span class="ltn__secondary-color">
+                                                            {{ auth()->user()->display_name }}</span></h6>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    @endif
                                     <li>
                                         <!-- Mobile Menu Button -->
                                         <div class="mobile-menu-toggle d-lg-none">

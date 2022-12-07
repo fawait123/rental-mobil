@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -97,5 +98,29 @@ class AuthController extends Controller
         ]);
 
         return redirect()->route('frontend.login')->with(['message'=>'Register successfully, Please login']);
+    }
+
+    public function actionLogin(Request $request)
+    {
+        $request->validate([
+            'username'=>'required',
+            'password'=>'required',
+        ]);
+
+        $check = User::where('username',$request->username)->orWhere('email',$request->username)->first();
+        if(!$check){
+            return redirect()->route('frontend.login')->with(['message'=>'These credentials do not match our records']);
+        }
+
+        if(!Hash::check($request->password, $check->password)){
+            return redirect()->route('frontend.login')->with(['message'=>'These credentials do not match our records']);
+        }
+
+        if($check->is_active == false){
+            return redirect()->route('frontend.login')->with(['message'=>'Account is inactive']);
+        }
+        $remember = $request->remember == 'on'?true:false;
+        Auth::login($check,$remember);
+        return redirect()->route('welcome');
     }
 }

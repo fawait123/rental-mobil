@@ -104,7 +104,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <form action="{{ route('login') }}" method="post">
+                                                <form action="{{ route('frontend.register.action') }}" method="post">
                                                     @csrf
                                                     <div class="edit-profile__body">
                                                         <div class="form-group mb-20">
