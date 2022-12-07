@@ -8,12 +8,17 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\AdminCompanyController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\FrontEnd\AuthController;
 
 
 Route::group(['prefix'=>'/'],function(){
     Route::get('/',[WelcomeController::class,'index'])->name('welcome');
     Route::get('products',[WelcomeController::class, 'product'])->name('product');
     Route::get('contact',[WelcomeController::class, 'contact'])->name('contact');
+    Route::get('customer/login',[WelcomeController::class, 'login'])->name('frontend.login');
+    Route::get('customer/register',[WelcomeController::class, 'register'])->name('frontend.register');
+    // auth
+    Route::post('customer/register',[AuthController::class, 'actionRegister'])->name('frontend.register.store');
 });
 
 Auth::routes();

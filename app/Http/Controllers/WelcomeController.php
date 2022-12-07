@@ -20,4 +20,15 @@ class WelcomeController extends Controller
     {
         return view('frontend.pages.contact.index');
     }
+
+    public function login()
+    {
+        return view('frontend.pages.login.index');
+    }
+
+
+    public function register()
+    {
+        return view('frontend.pages.register.index');
+    }
 }
