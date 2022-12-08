@@ -8,6 +8,9 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\AdminCompanyController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\RecomendedController;
+use App\Http\Controllers\OtherController;
 use App\Http\Controllers\FrontEnd\AuthController;
 
 
@@ -42,4 +45,11 @@ Route::group(['prefix'=>'masterdata','middleware'=>'auth'],function(){
         Route::get('list-car',[AdminCompanyController::class,'listCar'])->name('admin.list-car');
         Route::get('isShow',[AdminCompanyController::class,'isShow'])->name('admin.is-show');
     });
+});
+
+// route admin front end
+Route::group(['prefix'=>'admin/frontend','middleware'=>'auth'],function(){
+    Route::resource('banner',BannerController::class);
+    Route::resource('recomended',RecomendedController::class);
+    Route::resource('other',OtherController::class);
 });
