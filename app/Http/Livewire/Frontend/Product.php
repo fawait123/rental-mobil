@@ -24,9 +24,12 @@ class Product extends Component
     {
         $query = ModelProperty::query();
         $query = $query->with(['company','car.brand','car.type']);
-        $query = $query->where('price','like','%'.$this->search.'%')->orWhereHas('car',function($qr){
-            $qr->where('name','like','%'.$this->search.'%');
-        });
+        $query = $query->where('is_show',true);
+        if($this->search != ''){
+            $query = $query->where('price','like','%'.$this->search.'%')->orWhereHas('car',function($qr){
+                $qr->where('name','like','%'.$this->search.'%');
+            })->where('is_show',true);
+        }
         $query = $query->paginate($this->perPage);
         return view('livewire.frontend.product',compact('query'));
     }

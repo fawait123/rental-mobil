@@ -35,129 +35,147 @@
                         <div class="tab-pane fade active show" id="liton_product_grid">
                             <div class="ltn__product-tab-content-inner ltn__product-grid-view">
                                 <div class="row">
-                                    @foreach ($query as $row)
-                                        <div class="col-xl-4 col-sm-6 col-12">
-                                            <div class="ltn__product-item text-center">
-                                                <div class="product-img">
-                                                    <a href="product-details.html"><img src="{{ $row->car->picture }}"
-                                                            alt="#"></a>
-                                                    <div class="product-badge">
-                                                        <ul>
-                                                            <li class="badge-1">{{ $row->car->brand->name }}</li>
-                                                        </ul>
+                                    @if (count($query) > 0)
+                                        @foreach ($query as $row)
+                                            <div class="col-xl-4 col-sm-6 col-12">
+                                                <div class="ltn__product-item text-center">
+                                                    <div class="product-img">
+                                                        <a href="product-details.html"><img
+                                                                src="{{ $row->car->picture }}" alt="#"></a>
+                                                        <div class="product-badge">
+                                                            <ul>
+                                                                <li class="badge-1">{{ $row->car->brand->name }}</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="product-hover-action product-hover-action-2">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#" title="Quick View"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#quick_view_modal">
+                                                                        <i class="icon-magnifier"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="add-to-cart">
+                                                                    <a href="#" title="Add to Cart"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#add_to_cart_modal"
+                                                                        data-picture="{{ $row->car->picture }}"
+                                                                        data-name="{{ $row->car->name }}"
+                                                                        data-price="{{ number_format($row->price, 2, ',', '.') }}">
+                                                                        <span class="cart-text d-none d-xl-block">Add to
+                                                                            Cart</span>
+                                                                        <span class="d-block d-xl-none"><i
+                                                                                class="icon-handbag"></i></span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" title="Quick View"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#quick_view_modal">
+                                                                        <i class="icon-shuffle"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                    <div class="product-hover-action product-hover-action-2">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="#" title="Quick View"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#quick_view_modal">
-                                                                    <i class="icon-magnifier"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li class="add-to-cart">
-                                                                <a href="#" title="Add to Cart"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#add_to_cart_modal">
-                                                                    <span class="cart-text d-none d-xl-block">Add to
-                                                                        Cart</span>
-                                                                    <span class="d-block d-xl-none"><i
-                                                                            class="icon-handbag"></i></span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" title="Quick View"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#quick_view_modal">
-                                                                    <i class="icon-shuffle"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h2 class="product-title"><a
-                                                            href="product-details.html">{{ $row->car->name }}</a>
-                                                    </h2>
-                                                    <div class="product-price">
-                                                        <span>Rp. {{ number_format($row->price, 2, ',', '.') }}</span>
+                                                    <div class="product-info">
+                                                        <h2 class="product-title"><a
+                                                                href="product-details.html">{{ $row->car->name }}</a>
+                                                        </h2>
+                                                        <div class="product-price">
+                                                            <span>Rp.
+                                                                {{ number_format($row->price, 2, ',', '.') }}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    @else
+                                        <span>No data to show</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="liton_product_list">
                             <div class="ltn__product-tab-content-inner ltn__product-list-view">
                                 <div class="row">
-                                    @foreach ($query as $row)
-                                        <div class="col-lg-12">
-                                            <div class="ltn__product-item">
-                                                <div class="product-img">
-                                                    <a href="product-details.html"><img src="{{ $row->car->picture }}"
-                                                            alt="#"></a>
-                                                    <div class="product-badge">
-                                                        <ul>
-                                                            <li class="badge-1">{{ $row->car->brand->name }}</li>
-                                                        </ul>
+                                    @if (count($query) > 0)
+                                        @foreach ($query as $row)
+                                            <div class="col-lg-12">
+                                                <div class="ltn__product-item">
+                                                    <div class="product-img">
+                                                        <a href="product-details.html"><img
+                                                                src="{{ $row->car->picture }}" alt="#"></a>
+                                                        <div class="product-badge">
+                                                            <ul>
+                                                                <li class="badge-1">{{ $row->car->brand->name }}</li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h2 class="product-title"><a
-                                                            href="product-details.html">{{ $row->car->name }}</a></h2>
-                                                    <div class="product-price">
-                                                        <span>Rp. {{ number_format($row->price, 2, ',', '.') }}</span>
-                                                    </div>
-                                                    <div class="product-ratting">
-                                                        <ul>
-                                                            <li><a href="#"><i class="icon-star"></i></a></li>
-                                                            <li><a href="#"><i class="icon-star"></i></a></li>
-                                                            <li><a href="#"><i class="icon-star"></i></a></li>
-                                                            <li><a href="#"><i class="icon-star"></i></a></li>
-                                                            <li><a href="#"><i class="icon-star"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product-brief">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                            Recusandae
-                                                            asperiores sit odit nesciunt, aliquid, deleniti non et ut
-                                                            dolorem!
-                                                        </p>
-                                                    </div>
-                                                    <div class="product-hover-action product-hover-action-2">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="#" title="Quick View"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#quick_view_modal">
-                                                                    <i class="icon-magnifier"></i>
-                                                                </a>
-                                                            </li>
-                                                            <li class="add-to-cart">
-                                                                <a href="#" title="Add to Cart"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#add_to_cart_modal">
-                                                                    <span class="cart-text d-none d-xl-block">Add to
-                                                                        Cart</span>
-                                                                    <span class="d-block d-xl-none"><i
-                                                                            class="icon-handbag"></i></span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" title="Quick View"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#quick_view_modal">
-                                                                    <i class="icon-shuffle"></i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
+                                                    <div class="product-info">
+                                                        <h2 class="product-title"><a
+                                                                href="product-details.html">{{ $row->car->name }}</a>
+                                                        </h2>
+                                                        <div class="product-price">
+                                                            <span>Rp.
+                                                                {{ number_format($row->price, 2, ',', '.') }}</span>
+                                                        </div>
+                                                        <div class="product-ratting">
+                                                            <ul>
+                                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                                                <li><a href="#"><i class="icon-star"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="product-brief">
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                                Recusandae
+                                                                asperiores sit odit nesciunt, aliquid, deleniti non et
+                                                                ut
+                                                                dolorem!
+                                                            </p>
+                                                        </div>
+                                                        <div class="product-hover-action product-hover-action-2">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#" title="Quick View"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#quick_view_modal">
+                                                                        <i class="icon-magnifier"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="add-to-cart">
+                                                                    <a href="#" title="Add to Cart"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#add_to_cart_modal"
+                                                                        data-picture="{{ $row->car->picture }}"
+                                                                        data-name="{{ $row->car->name }}"
+                                                                        data-price="{{ number_format($row->price, 2, ',', '.') }}">
+                                                                        <span class="cart-text d-none d-xl-block">Add to
+                                                                            Cart</span>
+                                                                        <span class="d-block d-xl-none"><i
+                                                                                class="icon-handbag"></i></span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" title="Quick View"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#quick_view_modal">
+                                                                        <i class="icon-shuffle"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    @else
+                                        <span>No data to show</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>

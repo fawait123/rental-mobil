@@ -142,11 +142,7 @@
     <div class="ltn__utilize-overlay"></div>
 
     <!-- SLIDER AREA START (slider-6) -->
-    <div class="ltn__slider-area ltn__slider-3 ltn__slider-6 section-bg-1">
-        <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1 arrow-white---">
-            @include('frontend.layouts.slider')
-        </div>
-    </div>
+    @include('frontend.layouts.slider')
     <!-- SLIDER AREA END -->
 
     <!-- FEATURE AREA START ( Feature - 3) -->
