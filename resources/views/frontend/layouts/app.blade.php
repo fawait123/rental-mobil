@@ -543,7 +543,7 @@
                                 <div class="modal-product-item">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="modal-add-to-cart-content clearfix">
+                                            <div class="modal-add-to-cart-content clearfix" id="data-modal-body">
                                                 <div class="modal-product-img">
                                                     <img src="{{ asset('assets/frontend/img') }}/product/1.png"
                                                         alt="#">
@@ -653,7 +653,28 @@
             // modal on add to cart
             $('#add_to_cart_modal').on('show.bs.modal', function(e) {
                 let target = e.relatedTarget
-                console.log(target)
+                let picture = $(target).data('picture');
+                let name = $(target).data('name');
+                let price = $(target).data('price');
+                let html = `
+                <div class="modal-product-img">
+                                                    <img src="${picture}"
+                                                        alt="#">
+                                                </div>
+                                                <div class="modal-product-info">
+                                                    <h5><a href="#">${name}</a></h5>
+                                                    <p class="added-cart"><i class="fa fa-check-circle"></i>
+                                                        Rp. ${price}</p>
+                                                    <div class="btn-wrapper">
+                                                        <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View
+                                                            Cart</a>
+                                                        <a href="checkout.html"
+                                                            class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                                                    </div>
+                                                </div>
+                `
+                $("#data-modal-body").html(html)
+                console.log(name)
             })
             // modal detail product
             $('#quick_view_modal').on('show.bs.modal', function(e) {

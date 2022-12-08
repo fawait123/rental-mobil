@@ -59,7 +59,10 @@
                                                                 <li class="add-to-cart">
                                                                     <a href="#" title="Add to Cart"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#add_to_cart_modal">
+                                                                        data-bs-target="#add_to_cart_modal"
+                                                                        data-picture="{{ $row->car->picture }}"
+                                                                        data-name="{{ $row->car->name }}"
+                                                                        data-price="{{ number_format($row->price, 2, ',', '.') }}">
                                                                         <span class="cart-text d-none d-xl-block">Add to
                                                                             Cart</span>
                                                                         <span class="d-block d-xl-none"><i
@@ -147,7 +150,10 @@
                                                                 <li class="add-to-cart">
                                                                     <a href="#" title="Add to Cart"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#add_to_cart_modal">
+                                                                        data-bs-target="#add_to_cart_modal"
+                                                                        data-picture="{{ $row->car->picture }}"
+                                                                        data-name="{{ $row->car->name }}"
+                                                                        data-price="{{ number_format($row->price, 2, ',', '.') }}">
                                                                         <span class="cart-text d-none d-xl-block">Add to
                                                                             Cart</span>
                                                                         <span class="d-block d-xl-none"><i
