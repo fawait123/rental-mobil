@@ -647,6 +647,22 @@
     <!-- Main JS -->
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
 
+
+    <script>
+        $(document).ready(function() {
+            // modal on add to cart
+            $('#add_to_cart_modal').on('show.bs.modal', function(e) {
+                let target = e.relatedTarget
+                console.log(target)
+            })
+            // modal detail product
+            $('#quick_view_modal').on('show.bs.modal', function(e) {
+                let target = e.relatedTarget
+                console.log(target)
+            })
+        })
+    </script>
+
 </body>
 
 </html>

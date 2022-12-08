@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Banner;
+use App\Models\Recomended;
+use App\Models\Other;
 
 class WelcomeController extends Controller
 {
     public function index()
     {
-        return view('frontend.pages.home.index');
+        return view('frontend.pages.home.index',[
+            'banner'=>Banner::with(['property.company','property.car'])->where('is_show',true)->orderBy('id','DESC')->take(5)->get(),
+            'recomended'=>Recomended::with(['property.company','property.car'])->where('is_show',true)->orderBy('id','DESC')->take(4)->get(),
+            'other'=>Other::with(['property.company','property.car'])->where('is_show',true)->orderBy('id','DESC')->take(10)->get(),
+        ]);
     }
 
     public function product()
