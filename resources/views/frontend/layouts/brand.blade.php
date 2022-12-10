@@ -25,23 +25,38 @@
                                  <ul>
                                      <li>
                                          <a href="#" title="Quick View" data-bs-toggle="modal"
-                                             data-bs-target="#quick_view_modal">
+                                             data-bs-target="#quick_view_modal"
+                                             data-picture="{{ $item->property->car->picture }}"
+                                             data-name="{{ $item->property->car->name }}"
+                                             data-price="{{ number_format($item->property->price, 2, ',', '.') }}"
+                                             data-transmisi="{{ $item->property->car->transmisi }}"
+                                             data-color="{{ $item->property->car->color }}"
+                                             data-fuel="{{ $item->property->car->fuel }}"
+                                             data-seat_capacity="{{ $item->property->car->seat_capacity }}">
                                              <i class="icon-magnifier"></i>
                                          </a>
                                      </li>
                                      <li class="add-to-cart">
-                                         <a href="#" title="Add to Cart" data-bs-toggle="modal"
+                                         <a href="#" title="Checkout" data-bs-toggle="modal"
                                              data-bs-target="#add_to_cart_modal"
                                              data-picture="{{ $item->property->car->picture }}"
                                              data-name="{{ $item->property->car->name }}"
+                                             data-id={{ $item->property->id }}
                                              data-price="{{ number_format($item->property->price, 2, ',', '.') }}">
-                                             <span class="cart-text d-none d-xl-block">Add to Cart</span>
+                                             <span class="cart-text d-none d-xl-block">Checkout</span>
                                              <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
                                          </a>
                                      </li>
                                      <li>
                                          <a href="#" title="Quick View" data-bs-toggle="modal"
-                                             data-bs-target="#quick_view_modal">
+                                             data-bs-target="#quick_view_modal"
+                                             data-picture="{{ $item->property->car->picture }}"
+                                             data-name="{{ $item->property->car->name }}"
+                                             data-price="{{ number_format($item->property->price, 2, ',', '.') }}"
+                                             data-transmisi="{{ $item->property->car->transmisi }}"
+                                             data-color="{{ $item->property->car->color }}"
+                                             data-fuel="{{ $item->property->car->fuel }}"
+                                             data-seat_capacity="{{ $item->property->car->seat_capacity }}">
                                              <i class="icon-shuffle"></i>
                                          </a>
                                      </li>
