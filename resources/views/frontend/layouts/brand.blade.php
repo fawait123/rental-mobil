@@ -37,8 +37,9 @@
                                          </a>
                                      </li>
                                      <li class="add-to-cart">
-                                         <a href="#" title="Checkout" data-bs-toggle="modal"
-                                             data-bs-target="#add_to_cart_modal"
+                                         <a href="#"
+                                             style="pointer-events: {{ count($transaction) > 0 ? 'none' : '' }}"
+                                             title="Checkout" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal"
                                              data-picture="{{ $item->property->car->picture }}"
                                              data-name="{{ $item->property->car->name }}"
                                              data-id={{ $item->property->id }}
