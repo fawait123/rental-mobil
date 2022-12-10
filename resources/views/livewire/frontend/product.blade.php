@@ -52,16 +52,24 @@
                                                                 <li>
                                                                     <a href="#" title="Quick View"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#quick_view_modal">
+                                                                        data-bs-target="#quick_view_modal"
+                                                                        data-picture="{{ $row->car->picture }}"
+                                                                        data-name="{{ $row->car->name }}"
+                                                                        data-price="{{ number_format($row->price, 2, ',', '.') }}"
+                                                                        data-transmisi="{{ $row->car->transmisi }}"
+                                                                        data-color="{{ $row->car->color }}"
+                                                                        data-fuel="{{ $row->car->fuel }}"
+                                                                        data-seat_capacity="{{ $row->car->seat_capacity }}">
                                                                         <i class="icon-magnifier"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li class="add-to-cart">
-                                                                    <a href="#" title="Add to Cart"
+                                                                    <a href="#" title="Checkout"
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#add_to_cart_modal"
                                                                         data-picture="{{ $row->car->picture }}"
                                                                         data-name="{{ $row->car->name }}"
+                                                                        data-id="{{ $row->id }}"
                                                                         data-price="{{ number_format($row->price, 2, ',', '.') }}">
                                                                         <span class="cart-text d-none d-xl-block">Add to
                                                                             Cart</span>
@@ -72,7 +80,14 @@
                                                                 <li>
                                                                     <a href="#" title="Quick View"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#quick_view_modal">
+                                                                        data-bs-target="#quick_view_modal"
+                                                                        data-picture="{{ $row->car->picture }}"
+                                                                        data-name="{{ $row->car->name }}"
+                                                                        data-price="{{ number_format($row->price, 2, ',', '.') }}"
+                                                                        data-transmisi="{{ $row->car->transmisi }}"
+                                                                        data-color="{{ $row->car->color }}"
+                                                                        data-fuel="{{ $row->car->fuel }}"
+                                                                        data-seat_capacity="{{ $row->car->seat_capacity }}">
                                                                         <i class="icon-shuffle"></i>
                                                                     </a>
                                                                 </li>
@@ -143,18 +158,27 @@
                                                                 <li>
                                                                     <a href="#" title="Quick View"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#quick_view_modal">
+                                                                        data-bs-target="#quick_view_modal"
+                                                                        data-picture="{{ $row->car->picture }}"
+                                                                        data-name="{{ $row->car->name }}"
+                                                                        data-price="{{ number_format($row->price, 2, ',', '.') }}"
+                                                                        data-transmisi="{{ $row->car->transmisi }}"
+                                                                        data-color="{{ $row->car->color }}"
+                                                                        data-fuel="{{ $row->car->fuel }}"
+                                                                        data-seat_capacity="{{ $row->car->seat_capacity }}">
                                                                         <i class="icon-magnifier"></i>
                                                                     </a>
                                                                 </li>
                                                                 <li class="add-to-cart">
-                                                                    <a href="#" title="Add to Cart"
+                                                                    <a href="#" title="Checkout"
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#add_to_cart_modal"
                                                                         data-picture="{{ $row->car->picture }}"
+                                                                        data-id="{{ $row->id }}"
                                                                         data-name="{{ $row->car->name }}"
                                                                         data-price="{{ number_format($row->price, 2, ',', '.') }}">
-                                                                        <span class="cart-text d-none d-xl-block">Add to
+                                                                        <span class="cart-text d-none d-xl-block">Add
+                                                                            to
                                                                             Cart</span>
                                                                         <span class="d-block d-xl-none"><i
                                                                                 class="icon-handbag"></i></span>
@@ -163,7 +187,14 @@
                                                                 <li>
                                                                     <a href="#" title="Quick View"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#quick_view_modal">
+                                                                        data-bs-target="#quick_view_modal"
+                                                                        data-picture="{{ $row->car->picture }}"
+                                                                        data-name="{{ $row->car->name }}"
+                                                                        data-price="{{ number_format($row->price, 2, ',', '.') }}"
+                                                                        data-transmisi="{{ $row->car->transmisi }}"
+                                                                        data-color="{{ $row->car->color }}"
+                                                                        data-fuel="{{ $row->car->fuel }}"
+                                                                        data-seat_capacity="{{ $row->car->seat_capacity }}">
                                                                         <i class="icon-shuffle"></i>
                                                                     </a>
                                                                 </li>

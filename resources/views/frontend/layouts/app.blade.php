@@ -375,152 +375,8 @@
                                 <!-- <i class="fas fa-times"></i> -->
                             </button>
                         </div>
-                        <div class="modal-body">
-                            <div class="ltn__quick-view-modal-inner">
-                                <div class="modal-product-item">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-12">
-                                            <div class="modal-product-img">
-                                                <img src="{{ asset('assets/frontend/img') }}/product/4.png"
-                                                    alt="#">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-12">
-                                            <div class="modal-product-info shop-details-info pl-0">
-                                                <h3>Pink Flower Tree Red</h3>
-                                                <div class="product-price-ratting mb-20">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="product-price">
-                                                                <span>$49.00</span>
-                                                                <del>$65.00</del>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="product-ratting">
-                                                                <ul>
-                                                                    <li><a href="#"><i
-                                                                                class="icon-star"></i></a></li>
-                                                                    <li><a href="#"><i
-                                                                                class="icon-star"></i></a></li>
-                                                                    <li><a href="#"><i
-                                                                                class="icon-star"></i></a></li>
-                                                                    <li><a href="#"><i
-                                                                                class="icon-star"></i></a></li>
-                                                                    <li><a href="#"><i
-                                                                                class="icon-star"></i></a></li>
-                                                                    <li class="review-total"> <a href="#"> (
-                                                                            95 Reviews )</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="modal-product-brief">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                        Dignissimos repellendus repudiandae incidunt quidem pariatur
-                                                        expedita, quo quis modi tempore non.</p>
-                                                </div>
-                                                <div class="modal-product-meta ltn__product-details-menu-1 mb-20">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="ltn__color-widget clearfix">
-                                                                <strong class="d-meta-title">Color</strong>
-                                                                <ul>
-                                                                    <li class="theme"><a href="#"></a></li>
-                                                                    <li class="green-2"><a href="#"></a></li>
-                                                                    <li class="blue-2"><a href="#"></a></li>
-                                                                    <li class="white"><a href="#"></a></li>
-                                                                    <li class="red"><a href="#"></a></li>
-                                                                    <li class="yellow"><a href="#"></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="ltn__size-widget clearfix mt-25">
-                                                                <strong class="d-meta-title">Size</strong>
-                                                                <ul>
-                                                                    <li><a href="#">S</a></li>
-                                                                    <li><a href="#">M</a></li>
-                                                                    <li><a href="#">L</a></li>
-                                                                    <li><a href="#">XL</a></li>
-                                                                    <li><a href="#">XXL</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div
-                                                    class="ltn__product-details-menu-2 product-cart-wishlist-btn mb-30">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="cart-plus-minus">
-                                                                <input type="text" value="02" name="qtybutton"
-                                                                    class="cart-plus-minus-box">
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"
-                                                                class="theme-btn-1 btn btn-effect-1 d-add-to-cart"
-                                                                title="Add to Cart" data-bs-toggle="modal"
-                                                                data-bs-target="#add_to_cart_modal">
-                                                                <span>ADD TO CART</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"
-                                                                class="btn btn-effect-1 d-add-to-wishlist"
-                                                                title="Add to Cart" data-bs-toggle="modal"
-                                                                data-bs-target="#liton_wishlist_modal">
-                                                                <i class="icon-heart"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="ltn__social-media mb-30">
-                                                    <ul>
-                                                        <li class="d-meta-title">Share:</li>
-                                                        <li><a href="#" title="Facebook"><i
-                                                                    class="icon-social-facebook"></i></a></li>
-                                                        <li><a href="#" title="Twitter"><i
-                                                                    class="icon-social-twitter"></i></a></li>
-                                                        <li><a href="#" title="Pinterest"><i
-                                                                    class="icon-social-pinterest"></i></a></li>
-                                                        <li><a href="#" title="Instagram"><i
-                                                                    class="icon-social-instagram"></i></a></li>
+                        <div class="modal-body" id="modal-preview">
 
-                                                    </ul>
-                                                </div>
-                                                <div
-                                                    class="modal-product-meta ltn__product-details-menu-1 mb-30 d-none">
-                                                    <ul>
-                                                        <li><strong>SKU:</strong> <span>12345</span></li>
-                                                        <li>
-                                                            <strong>Categories:</strong>
-                                                            <span>
-                                                                <a href="#">Flower</a>
-                                                            </span>
-                                                        </li>
-                                                        <li>
-                                                            <strong>Tags:</strong>
-                                                            <span>
-                                                                <a href="#">Love</a>
-                                                                <a href="#">Flower</a>
-                                                                <a href="#">Heart</a>
-                                                            </span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="ltn__safe-checkout d-none">
-                                                    <h5>Guaranteed Safe Checkout</h5>
-                                                    <img src="{{ asset('assets/frontend/img') }}/icons/payment-2.png"
-                                                        alt="Payment Image">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -528,7 +384,7 @@
         </div>
         <!-- MODAL AREA END -->
 
-        <!-- MODAL AREA START (Add To Cart Modal) -->
+        <!-- MODAL AREA START (Checkout Modal) -->
         <div class="ltn__modal-area ltn__add-to-cart-modal-area">
             <div class="modal fade" id="add_to_cart_modal" tabindex="-1">
                 <div class="modal-dialog modal-md" role="document">
@@ -562,8 +418,6 @@
                                             </div>
                                             <!-- additional-info -->
                                             <div class="additional-info d-none--">
-                                                <p>We want to give you <b>10% discount</b> for your first order, <br>
-                                                    Use (fiama10) discount code at checkout</p>
                                                 <div class="payment-method">
                                                     <img src="{{ asset('assets/frontend/img') }}/icons/payment.png"
                                                         alt="#">
@@ -650,11 +504,12 @@
 
     <script>
         $(document).ready(function() {
-            // modal on add to cart
+            // modal on Checkout
             $('#add_to_cart_modal').on('show.bs.modal', function(e) {
                 let target = e.relatedTarget
                 let picture = $(target).data('picture');
                 let name = $(target).data('name');
+                let id = $(target).data('id');
                 let price = $(target).data('price');
                 let html = `
                 <div class="modal-product-img">
@@ -666,9 +521,7 @@
                                                     <p class="added-cart"><i class="fa fa-check-circle"></i>
                                                         Rp. ${price}</p>
                                                     <div class="btn-wrapper">
-                                                        <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View
-                                                            Cart</a>
-                                                        <a href="checkout.html"
+                                                        <a href="{{ route('frontend.checkout.index') }}?id=${id}"
                                                             class="theme-btn-2 btn btn-effect-2">Checkout</a>
                                                     </div>
                                                 </div>
@@ -679,7 +532,99 @@
             // modal detail product
             $('#quick_view_modal').on('show.bs.modal', function(e) {
                 let target = e.relatedTarget
-                console.log(target)
+                let picture = $(target).data('picture');
+                let name = $(target).data('name');
+                let price = $(target).data('price');
+                let transmisi = $(target).data('transmisi');
+                let color = $(target).data('color');
+                let fuel = $(target).data('fuel');
+                let seat_capacity = $(target).data('seat_capacity');
+                let html = `
+                <div class="ltn__quick-view-modal-inner">
+                                <div class="modal-product-item">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12">
+                                            <div class="modal-product-img">
+                                                <img src="${picture}"
+                                                    alt="#">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-12">
+                                            <div class="modal-product-info shop-details-info pl-0">
+                                                <h3>${name}</h3>
+                                                <div class="product-price-ratting mb-20">
+                                                    <ul>
+                                                        <li>
+                                                            <div class="product-price">
+                                                                <span>Rp. ${price}</span>
+                                                                <span>Rp. ${price}</span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="product-ratting">
+                                                                <ul>
+                                                                    <li><a href="#"><i
+                                                                                class="icon-star"></i></a></li>
+                                                                    <li><a href="#"><i
+                                                                                class="icon-star"></i></a></li>
+                                                                    <li><a href="#"><i
+                                                                                class="icon-star"></i></a></li>
+                                                                    <li><a href="#"><i
+                                                                                class="icon-star"></i></a></li>
+                                                                    <li><a href="#"><i
+                                                                                class="icon-star"></i></a></li>
+                                                                    <li class="review-total"> <a href="#"> (
+                                                                            95 Reviews )</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="modal-product-brief">
+                                                    <div class="row">
+                                                       <div class="col-6">
+                                                        <ul class="list-group">
+                                                            <li class="list-group-item">Fuel</li>
+                                                            <li class="list-group-item">Seat Capacity</li>
+                                                            <li class="list-group-item">Transmisi</li>
+                                                            <li class="list-group-item">Color</li>
+                                                        </ul>
+                                                        </div>
+                                                       <div class="col-6">
+                                                        <ul class="list-group">
+                                                            <li class="list-group-item">${fuel}</li>
+                                                            <li class="list-group-item">${seat_capacity}</li>
+                                                            <li class="list-group-item">${transmisi}</li>
+                                                            <li class="list-group-item">${color}</li>
+                                                        </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="ltn__product-details-menu-2 product-cart-wishlist-btn mb-30">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="{{ route('frontend.checkout.index') }}"
+                                                                class="theme-btn-1 btn btn-effect-1 d-add-to-cart"
+                                                                title="Checkout" data-bs-toggle="modal"
+                                                                data-bs-target="#add_to_cart_modal">
+                                                                <span>Checkout</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ltn__safe-checkout d-none">
+                                                    <h5>Guaranteed Safe Checkout</h5>
+                                                    <img src="{{ asset('assets/frontend/img') }}/icons/payment-2.png"
+                                                        alt="Payment Image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                `;
+                $("#modal-preview").html(html)
             })
         })
     </script>

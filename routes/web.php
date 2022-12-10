@@ -12,6 +12,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\RecomendedController;
 use App\Http\Controllers\OtherController;
 use App\Http\Controllers\FrontEnd\AuthController;
+use App\Http\Controllers\FrontEnd\TransactionController;
 
 
 Route::group(['prefix'=>'/'],function(){
@@ -23,6 +24,11 @@ Route::group(['prefix'=>'/'],function(){
     // auth
     Route::post('customer/register',[AuthController::class, 'actionRegister'])->name('frontend.register.store');
     Route::post('customer/login',[AuthController::class, 'actionLogin'])->name('frontend.register.action');
+
+    // checkout
+    Route::group(['middleware'=>'customerauth'],function(){
+        Route::get('checkout',[TransactionController::class,'checkoutView'])->name('frontend.checkout.index');
+    });
 });
 
 Auth::routes();
