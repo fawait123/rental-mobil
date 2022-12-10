@@ -27,12 +27,6 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
-
     <!-- Body main wrapper start -->
     <div class="body-wrapper">
 
@@ -140,9 +134,9 @@
                                                 <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                                     <span class="mini-cart-icon">
                                                         <i class="icon-handbag"></i>
-                                                        <sup>2</sup>
+                                                        <sup>{{count($transaction)}}</sup>
                                                     </span>
-                                                    <h6><span>Welcome,</span> <span class="ltn__secondary-color">
+                                                    <h6><span class="ltn__secondary-color">
                                                             {{ auth()->user()->display_name }}</span></h6>
                                                 </a>
                                             </div>
@@ -201,7 +195,45 @@
         </header>
         <!-- HEADER AREA END -->
 
-
+        <!-- Utilize Cart Menu Start -->
+        <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
+            <div class="ltn__utilize-menu-inner ltn__scrollbar">
+                <div class="ltn__utilize-menu-head">
+                    <span class="ltn__utilize-menu-title">Active Transaction</span>
+                    <button class="ltn__utilize-close">×</button>
+                </div>
+                @foreach ($transaction as $item)
+                <div class="mini-cart-product-area ltn__scrollbar">
+                    <div class="mini-cart-item clearfix">
+                        <div class="mini-cart-img">
+                            <a href="#"><img src="{{$item->property->car->picture}}"
+                                    alt="Image"></a>
+                            <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
+                        </div>
+                        <div class="mini-cart-info">
+                            <h6><a href="#">{{$item->property->car->name}}</a></h6>
+                            <span class="mini-cart-quantity">{{$item->number_of_days}} x Rp. {{number_format($item->price,2,',','.')}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mini-cart-footer">
+                    <div class="mini-cart-sub-total">
+                        <h5>Subtotal: <span>Rp. {{number_format($item->total_price,2,',','.')}}</span></h5>
+                    </div>
+                    <div class="mini-cart-sub-total">
+                        <h5>Payment Type: <span class="text-secondary">{{$item->payment->type}}</span></h5>
+                    </div>
+                    <div class="mini-cart-sub-total">
+                        <h5>Status Payment: <span class="text-{{$item->payment->status == 'paid' ? 'success' : 'danger'}}">{{$item->payment->status}}</span></h5>
+                    </div>
+                    <div class="mini-cart-sub-total">
+                        <h5>Note: <span class="text-secondary text-sm">{{$item->note}}</span></h5>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <!-- Utilize Cart Menu End -->
 
         @yield('content')
 
@@ -500,8 +532,6 @@
     <script src="{{ asset('assets/frontend/js/plugins.js') }}"></script>
     <!-- Main JS -->
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
-
-
     <script>
         $(document).ready(function() {
             // modal on Checkout
@@ -521,8 +551,29 @@
                                                     <p class="added-cart"><i class="fa fa-check-circle"></i>
                                                         Rp. ${price}</p>
                                                     <div class="btn-wrapper">
-                                                        <a href="{{ route('frontend.checkout.index') }}?id=${id}"
-                                                            class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                                                        <form action="{{ route('frontend.checkout.action') }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="id" value="${id}" />
+                                                            <div class="form-group">
+                                                                <label>Start Date</label>
+                                                                <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" required />
+                                                                @error('start_date')
+                                                                    <div class="invalid-feedback">{{$message}}</div>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>End Date</label>
+                                                                <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="end_date"  required />
+                                                                @error('end_date')
+                                                                    <div class="invalid-feedback">{{$message}}</div>
+                                                                @enderror
+                                                            </div>
+                                                            <br>
+                                                            <div class="form-group">
+                                                                <button
+                                                            class="theme-btn-2 btn btn-effect-2">Checkout</button>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                 `
@@ -627,6 +678,16 @@
                 $("#modal-preview").html(html)
             })
         })
+    </script>
+    {{-- @error('start_date')
+        <script>
+            $("#add_to_cart_modal").modal('show')
+        </script>
+    @enderror --}}
+    <script>
+        $(document).load(function() {
+            $("#add_to_cart_modal").modal('show')
+        });
     </script>
 
 </body>

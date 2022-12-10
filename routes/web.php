@@ -26,8 +26,10 @@ Route::group(['prefix'=>'/'],function(){
     Route::post('customer/login',[AuthController::class, 'actionLogin'])->name('frontend.register.action');
 
     // checkout
-    Route::group(['middleware'=>'customerauth'],function(){
+    Route::group(['prefix'=>'transaction','middleware'=>'customerauth'],function(){
         Route::get('checkout',[TransactionController::class,'checkoutView'])->name('frontend.checkout.index');
+        Route::post('checkout',[TransactionController::class,'checkoutAction'])->name('frontend.checkout.action');
+        Route::post('process',[TransactionController::class,'process'])->name('frontend.checkout.process');
     });
 });
 
