@@ -72,11 +72,31 @@
             <span>Master Data</span>
         </li>
         <li>
-            <a href="{{ route('company.index') }}"
-                class="{{ Request::is('masterdata/company*') || Request::is('masterdata/companies*') ? 'active' : '' }}">
+            <a href="{{ route('company.index') }}" class="{{ Request::is('masterdata/companies*') ? 'active' : '' }}">
                 <span data-feather="server" class="nav-icon"></span>
                 <span class="menu-text">Company</span>
             </a>
         </li>
+        @if ($company)
+            <li>
+                <a href="{{ route('property.index') }}"
+                    class="{{ Request::is('masterdata/property*') ? 'active' : '' }}">
+                    <span data-feather="server" class="nav-icon"></span>
+                    <span class="menu-text">Manage Property</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('transaction.index') }}" class="{{ Request::is('transaction*') ? 'active' : '' }}">
+                    <span data-feather="server" class="nav-icon"></span>
+                    <span class="menu-text">Transaction</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('company.index') }}" class="{{ Request::is('report*') ? 'active' : '' }}">
+                    <span data-feather="server" class="nav-icon"></span>
+                    <span class="menu-text">Report</span>
+                </a>
+            </li>
+        @endif
     @endif
 </ul>

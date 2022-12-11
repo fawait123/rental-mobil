@@ -13,6 +13,7 @@ use App\Http\Controllers\RecomendedController;
 use App\Http\Controllers\OtherController;
 use App\Http\Controllers\FrontEnd\AuthController;
 use App\Http\Controllers\FrontEnd\TransactionController;
+use App\Http\Controllers\TransactionController as AdminTransactionController;
 
 
 Route::group(['prefix'=>'/'],function(){
@@ -43,16 +44,19 @@ Route::group(['prefix'=>'masterdata','middleware'=>'auth'],function(){
     Route::resource('type',TypeController::class);
     Route::resource('user',UserController::class);
     Route::resource('company',CompanyController::class);
-    // company
-    Route::group(['prefix'=>'companies'],function(){
-        Route::resource('property',PropertyController::class);
-    });
+    Route::resource('property',PropertyController::class);
     // admin company
     Route::group(['prefix'=>'admin'],function(){
         Route::get('company',[AdminCompanyController::class,'index'])->name('admin.company');
         Route::get('list-car',[AdminCompanyController::class,'listCar'])->name('admin.list-car');
         Route::get('isShow',[AdminCompanyController::class,'isShow'])->name('admin.is-show');
     });
+});
+
+// route transaction
+Route::group(['prefix'=>'/','middleware'=>'auth'],function(){
+    Route::get('transaction/download/{id}',[AdminTransactionController::class,'download'])->name('transaction.download');
+    Route::resource('transaction',AdminTransactionController::class);
 });
 
 // route admin front end
