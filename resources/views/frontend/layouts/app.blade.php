@@ -584,12 +584,16 @@
             $('#quick_view_modal').on('show.bs.modal', function(e) {
                 let target = e.relatedTarget
                 let picture = $(target).data('picture');
+                let id = $(target).data('id');
                 let name = $(target).data('name');
                 let price = $(target).data('price');
                 let transmisi = $(target).data('transmisi');
                 let color = $(target).data('color');
                 let fuel = $(target).data('fuel');
                 let seat_capacity = $(target).data('seat_capacity');
+                console.log(id)
+                let route = "{{route('product.detail','__row')}}"
+                route = route.replace('__row',id)
                 let html = `
                 <div class="ltn__quick-view-modal-inner">
                                 <div class="modal-product-item">
@@ -655,11 +659,9 @@
                                                     class="ltn__product-details-menu-2 product-cart-wishlist-btn mb-30">
                                                     <ul>
                                                         <li>
-                                                            <a href="{{ route('frontend.checkout.index') }}"
-                                                                class="theme-btn-1 btn btn-effect-1 d-add-to-cart"
-                                                                title="Checkout" data-bs-toggle="modal"
-                                                                data-bs-target="#add_to_cart_modal">
-                                                                <span>Checkout</span>
+                                                            <a href="${route}" class="theme-btn-1 btn btn-effect-1 d-add-to-cart"
+                                                                title="Checkout">
+                                                                <span>Detail</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -678,16 +680,6 @@
                 $("#modal-preview").html(html)
             })
         })
-    </script>
-    {{-- @error('start_date')
-        <script>
-            $("#add_to_cart_modal").modal('show')
-        </script>
-    @enderror --}}
-    <script>
-        $(document).load(function() {
-            $("#add_to_cart_modal").modal('show')
-        });
     </script>
 
 </body>

@@ -54,6 +54,7 @@
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#quick_view_modal"
                                                                         data-picture="{{ $row->car->picture }}"
+                                                                        data-id={{ $row->id }}
                                                                         data-name="{{ $row->car->name }}"
                                                                         data-price="{{ number_format($row->price, 2, ',', '.') }}"
                                                                         data-transmisi="{{ $row->car->transmisi }}"
@@ -83,6 +84,7 @@
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#quick_view_modal"
                                                                         data-picture="{{ $row->car->picture }}"
+                                                                        data-id={{ $row->id }}
                                                                         data-name="{{ $row->car->name }}"
                                                                         data-price="{{ number_format($row->price, 2, ',', '.') }}"
                                                                         data-transmisi="{{ $row->car->transmisi }}"
@@ -160,6 +162,7 @@
                                                                     <a href="#" title="Quick View"
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#quick_view_modal"
+                                                                        data-id={{ $row->id }}
                                                                         data-picture="{{ $row->car->picture }}"
                                                                         data-name="{{ $row->car->name }}"
                                                                         data-price="{{ number_format($row->price, 2, ',', '.') }}"
@@ -191,6 +194,7 @@
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#quick_view_modal"
                                                                         data-picture="{{ $row->car->picture }}"
+                                                                        data-id={{ $row->id }}
                                                                         data-name="{{ $row->car->name }}"
                                                                         data-price="{{ number_format($row->price, 2, ',', '.') }}"
                                                                         data-transmisi="{{ $row->car->transmisi }}"
