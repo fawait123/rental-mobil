@@ -19,6 +19,7 @@ use App\Http\Controllers\TransactionController as AdminTransactionController;
 Route::group(['prefix'=>'/'],function(){
     Route::get('/',[WelcomeController::class,'index'])->name('welcome');
     Route::get('products',[WelcomeController::class, 'product'])->name('product');
+    Route::get('account',[WelcomeController::class, 'account'])->name('account');
     Route::get('products/{id}',[WelcomeController::class, 'detail'])->name('product.detail');
     Route::get('contact',[WelcomeController::class, 'contact'])->name('contact');
     Route::get('customer/login',[WelcomeController::class, 'login'])->name('frontend.login');

@@ -80,4 +80,20 @@ class WelcomeController extends Controller
 
         return abort(404);
     }
+
+    public function account()
+    {
+        $transaction = [];
+        $customer = Customer::where('user_id',auth()->user()->id)->first();
+        if(auth()->user()){
+            $transaction = Transaction::with(['property.car','payment'])->where('customer_id',$customer->id)->where('status','process')->get();
+        }
+        $order = Transaction::with(['property.car','payment'])->where('customer_id',$customer->id)->get();
+
+        return view('frontend.pages.account.index',[
+            'transaction'=>$transaction,
+            'customer'=>$customer,
+            'order'=>$order
+        ]);
+    }
 }
