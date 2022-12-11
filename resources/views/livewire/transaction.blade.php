@@ -66,6 +66,9 @@
                                             <span class="userDatatable-title">Total Price</span>
                                         </th>
                                         <th>
+                                            <span class="userDatatable-title">Status</span>
+                                        </th>
+                                        <th>
                                             <span class="userDatatable-title float-right">action</span>
                                         </th>
                                     </tr>
@@ -117,6 +120,12 @@
                                                 <td>
                                                     <div class="userDatatable-content d-inline-block">
                                                         {{ number_format($row->total_price, 2, ',', '.') }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content d-inline-block">
+                                                        <span
+                                                            class="bg-opacity-{{ $row->status == 'completed' ? 'success' : 'danger' }}  color-{{ $row->status == 'completed' ? 'success' : 'danger' }} rounded-pill userDatatable-content-status active">{{ $row->status == 'completed' ? 'Completed' : 'Process' }}</span>
                                                     </div>
                                                 </td>
                                                 <td>

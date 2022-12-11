@@ -14,6 +14,11 @@ class TransactionController extends Controller
 {
     public function checkoutView()
     {
+        $transaction = [];
+        if(auth()->user()){
+            $customer = Customer::where('user_id',auth()->user()->id)->first();
+            $transaction = Transaction::with(['property.car','payment'])->where('customer_id',$customer->id)->where('status','process')->get();
+        }
         $customer = Customer::where('user_id',auth()->user()->id)->first();
         $items = \Cart::getContent();
 
@@ -22,7 +27,8 @@ class TransactionController extends Controller
         }
         return view('frontend.pages.transaction.checkout.index',[
             'customer' => $customer,
-            'items' => $items
+            'items' => $items,
+            'transaction' => $transaction
         ]);
     }
 
@@ -78,6 +84,7 @@ class TransactionController extends Controller
 
         $items = \Cart::getContent();
         $total = \Cart::getTotal();
+        $customer = Customer::where('user_id',auth()->user()->id)->first();
         foreach($items as $item){
             $transaction = Transaction::create([
                 'name'=>$request->name,
@@ -93,8 +100,10 @@ class TransactionController extends Controller
                 'number_of_days'=>$item->quantity,
                 'note'=>$request->note,
                 'property_id'=>$item->associatedModel->id,
-                'customer_id'=>auth()->user()->id,
+                'customer_id'=>$customer->id,
                 'company_id'=>$item->associatedModel->company_id,
+                'status'=>'process',
+                'invoice' =>$this->invoice()
             ]);
 
             Payment::create([
@@ -103,8 +112,20 @@ class TransactionController extends Controller
                 'type'=>$request->payment,
                 'status'=>'unpaid'
             ]);
+
+            Property::where('id',$item->associatedModel->id)->update([
+                'is_available'=>false
+            ]);
         }
 
         return redirect()->route('welcome')->with(['message'=>'Transaction successfully created']);
+    }
+
+
+    public function invoice()
+    {
+        $count = Transaction::count();
+        $count = $count ++;
+        return 'INV-'.date('YmdHis').$count;
     }
 }

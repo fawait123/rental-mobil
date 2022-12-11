@@ -7,6 +7,7 @@ use App\Models\Banner;
 use App\Models\Recomended;
 use App\Models\Other;
 use App\Models\Transaction;
+use App\Models\Customer;
 
 class WelcomeController extends Controller
 {
@@ -14,7 +15,8 @@ class WelcomeController extends Controller
     {
         $transaction = [];
         if(auth()->user()){
-            $transaction = Transaction::with(['property.car','payment'])->where('customer_id',auth()->user()->id)->get();
+            $customer = Customer::where('user_id',auth()->user()->id)->first();
+            $transaction = Transaction::with(['property.car','payment'])->where('customer_id',$customer->id)->where('status','process')->get();
         }
         return view('frontend.pages.home.index',[
             'banner'=>Banner::with(['property.company','property.car'])->where('is_show',true)->orderBy('id','DESC')->take(5)->get(),
@@ -28,7 +30,8 @@ class WelcomeController extends Controller
     {
         $transaction = [];
         if(auth()->user()){
-            $transaction = Transaction::with(['property.car','payment'])->where('customer_id',auth()->user()->id)->get();
+            $customer = Customer::where('user_id',auth()->user()->id)->first();
+            $transaction = Transaction::with(['property.car','payment'])->where('customer_id',$customer->id)->where('status','process')->get();
         }
         return view('frontend.pages.product.index',[
             'transaction' => $transaction
@@ -39,7 +42,8 @@ class WelcomeController extends Controller
     {
         $transaction = [];
         if(auth()->user()){
-            $transaction = Transaction::with(['property.car','payment'])->where('customer_id',auth()->user()->id)->get();
+            $customer = Customer::where('user_id',auth()->user()->id)->first();
+            $transaction = Transaction::with(['property.car','payment'])->where('customer_id',$customer->id)->where('status','process')->get();
         }
         return view('frontend.pages.contact.index',[
             'transaction' => $transaction

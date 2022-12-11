@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Company;
 use App\Models\Payment;
+use App\Models\Property;
 
 class TransactionController extends Controller
 {
@@ -92,6 +93,12 @@ class TransactionController extends Controller
         if($request->type=='transaction'){
             Transaction::where('id',$id)->update([
                 'status'=>'completed'
+            ]);
+
+            $transaction = Transaction::where('id',$id)->first();
+
+            Property::where('id',$transaction->property_id)->update([
+                'is_available'=>true
             ]);
 
             return redirect()->route('transaction.show',$id)->with(['success'=>'Transaction update successfully']);
