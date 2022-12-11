@@ -254,84 +254,137 @@
         </nav>
     </header>
     <main class="main-content">
-
-        <aside class="sidebar-wrapper">
-            <div class="sidebar sidebar-collapse" id="sidebar">
-                <div class="sidebar__menu-group">
-                    @include('layouts.navigation')
-                </div>
-            </div>
-        </aside>
-
         <div class="contents">
-
             <div class="container-fluid">
-                <div class="social-dash-wrap">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="breadcrumb-main">
-                                <h4 class="text-capitalize breadcrumb-title">
-                                    {{ count($path) > 1 ? $path[0] . ' ' . $path[1] : $path[0] }}</h4>
-                                <div class="breadcrumb-action justify-content-center flex-wrap">
-                                    <ul class="atbd-breadcrumb nav">
-                                        <li class="atbd-breadcrumb__item">
-                                            <a href="{{ route('home') }}">
-                                                <span class="la la-home"></span>
-                                            </a>
-                                            <span class="breadcrumb__seperator">
-                                                <span class="la la-slash"></span>
-                                            </span>
-                                        </li>
-                                        @for ($i = 0; $i < count($path); $i++)
-                                            <li class="atbd-breadcrumb__item">
-                                                <span class="text-capitalize">{{ $path[$i] }}</span>
-                                                @if ($i < count($path))
-                                                    <span class="breadcrumb__seperator">
-                                                        <span class="la la-slash"></span>
-                                                    </span>
-                                                @endif
-                                            </li>
-                                        @endfor
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="payment-invoice global-shadow border bg-white radius-xl w-100 mb-30">
+                            <div class="payment-invoice__body">
+                                <div class="payment-invoice-address d-flex justify-content-sm-between">
+                                    <div class="payment-invoice-logo">
+                                        <a href="index.html"><img class="svg dark" src="img/logo_dark.svg"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="payment-invoice-address__area">
+                                        <address>{{ $company->name }}<br> {{ $company->address }}<br>
+                                            {{ $company->email }}<br>
+                                            Phone : {{ $company->telp }}</address>
+                                    </div>
+                                </div><!-- End: .payment-invoice-address -->
+                                <div
+                                    class="payment-invoice-qr d-flex justify-content-between mb-40 px-xl-50 px-30 py-sm-30 py-20 ">
+                                    <div class="d-flex justify-content-center mb-lg-0 mb-25">
+                                        <div class="payment-invoice-qr__number">
+                                            <div class="display-3">
+                                                Invoice
+                                            </div>
+                                            <p>No : <span>#{{ $transaction->invoice }}</span></p>
+                                            <p>Start Order :
+                                                <span>{{ date('d M Y', strtotime($transaction->start_order)) }}</span>
+                                            </p>
+                                            <p>End Order :
+                                                <span>{{ date('d M Y', strtotime($transaction->end_order)) }}</span>
+                                            </p>
+                                            <p>Status : <span>{{ $transaction->status }}</span></p>
+                                        </div>
+                                    </div><!-- End: .d-flex -->
+                                    <div class="d-flex justify-content-center mb-lg-0 mb-25">
+                                        <div class="payment-invoice-qr__code bg-white radius-xl p-20">
+                                            <p>Payment Method : {{ $transaction->payment->type }}</p>
+                                            <p>Payment Status : {{ $transaction->payment->status }}</p>
+                                        </div>
+                                    </div><!-- End: .d-flex -->
+                                    <div class="d-flex justify-content-center">
+                                        <div class="payment-invoice-qr__address">
+                                            <p>Invoice To:</p>
+                                            <span>{{ $transaction->name }}</span><br>
+                                            <span>{{ $transaction->customer->address }}</span><br>
+                                            <span>{{ $transaction->customer->telp }}</span><br>
+                                            <span>{{ $transaction->customer->email }}</span>
+                                        </div>
+                                    </div><!-- End: .d-flex -->
+                                </div><!-- End: .payment-invoice-qr -->
+                                <div class="payment-invoice-table">
+                                    <div class="table-responsive">
+                                        <table id="cart" class="table table-borderless">
+                                            <thead>
+                                                <tr class="product-cart__header">
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Product</th>
+                                                    <th scope="col" class="text-right">Price Per Unit</th>
+                                                    <th scope="col" class="text-right">Number Of Days</th>
+                                                    <th scope="col" class="text-right">Order Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th>1</th>
+                                                    <td class="Product-cart-title">
+                                                        <div class="media  align-items-center">
+                                                            <div class="media-body">
+                                                                <h5 class="mt-0">
+                                                                    {{ $transaction->property->car->name }}</h5>
+                                                                <div>
+                                                                    <p>Number
+                                                                        vehicles:<span>{{ $transaction->property->car->number_vehicles }}</span>
+                                                                    </p>
+                                                                    <p>color:<span>{{ $transaction->property->car->color }}</span>
+                                                                    </p>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="unit text-right">
+                                                        {{ number_format($transaction->price, 2, ',', '.') }}
+                                                    </td>
+                                                    <td class="invoice-quantity text-right">
+                                                        {{ $transaction->number_of_days }}</td>
+                                                    <td class="text-right order">
+                                                        {{ number_format($transaction->total_price, 2, ',', '.') }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="3"></td>
+                                                    <td class="order-summery float-right">
+                                                        <div class="total">
+                                                            <div class="subtotalTotal mb-0 text-right">
+                                                                Subtotal :
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="total-money d-flex justify-content-between align-items-center mt-2 text-right float-right">
+                                                            <h6>Total :</h6>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        <div class="total-order float-right text-right fs-14 fw-500">
+                                                            <p>Rp.
+                                                                {{ number_format($transaction->total_price, 2, ',', '.') }}
+                                                            </p>
+                                                            <h5 class="text-primary">
+                                                                Rp.
+                                                                {{ number_format($transaction->total_price, 2, ',', '.') }}
+                                                            </h5>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div><!-- End: .payment-invoice-table -->
+                            </div><!-- End: .payment-invoice__body -->
+                        </div><!-- End: .payment-invoice -->
+                    </div><!-- End: .col -->
                 </div>
-                @yield('content')
             </div>
 
         </div>
-        <footer class="footer-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="footer-copyright">
-                            <p>2020 @<a href="#">Aazztech</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="footer-menu text-right">
-                            <ul>
-                                <li>
-                                    <a href="#">About</a>
-                                </li>
-                                <li>
-                                    <a href="#">Team</a>
-                                </li>
-                                <li>
-                                    <a href="#">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- ends: .Footer Menu -->
-                    </div>
-                </div>
-            </div>
-        </footer>
     </main>
-    <div id="overlayer">
+    {{-- <div id="overlayer">
         <span class="loader-overlay">
             <div class="atbd-spin-dots spin-lg">
                 <span class="spin-dot badge-dot dot-primary"></span>
@@ -340,7 +393,7 @@
                 <span class="spin-dot badge-dot dot-primary"></span>
             </div>
         </span>
-    </div>
+    </div> --}}
     <div class="overlay-dark-sidebar"></div>
     <div class="notification-wrapper top-right"></div>
     {{-- modal --}}
@@ -444,6 +497,9 @@
 
     @livewireScripts
     @stack('customjs')
+    <script>
+        window.print()
+    </script>
 </body>
 
 </html>
