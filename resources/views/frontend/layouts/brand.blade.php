@@ -37,6 +37,12 @@
                                          </a>
                                      </li>
                                      <li class="add-to-cart">
+                                         @if ($item->property->is_available == 0)
+                                             <a href="#" style="pointer-events: none">
+                                                 <span class="cart-text d-none d-xl-block">In Order</span>
+                                                 <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
+                                             </a>
+                                         @endif
                                          <a href="#"
                                              style="pointer-events: {{ count($transaction) > 0 ? 'none' : '' }}"
                                              title="Checkout" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal"

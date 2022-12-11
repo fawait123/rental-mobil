@@ -65,6 +65,7 @@
                                                                 </li>
                                                                 <li class="add-to-cart">
                                                                     <a href="#" title="Checkout"
+                                                                        style="pointer-events: {{ count($transaction) > 0 ? 'none' : '' }}"
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#add_to_cart_modal"
                                                                         data-picture="{{ $row->car->picture }}"
@@ -171,6 +172,7 @@
                                                                 </li>
                                                                 <li class="add-to-cart">
                                                                     <a href="#" title="Checkout"
+                                                                        style="pointer-events: {{ count($transaction) > 0 ? 'none' : '' }}"
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#add_to_cart_modal"
                                                                         data-picture="{{ $row->car->picture }}"
@@ -228,18 +230,6 @@
                                     value="{{ request('search') }}" placeholder="Search your keyword...">
                                 <button type="submit"><i class="icon-magnifier"></i></button>
                             </form>
-                        </div>
-                        <!-- Price Filter Widget -->
-                        <div class="widget ltn__price-filter-widget">
-                            <h4 class="ltn__widget-title">Price</h4>
-                            <div class="price_filter">
-                                <div class="price_slider_amount">
-                                    <input type="submit" value="Your range:" />
-                                    <input type="text" class="amount" name="price"
-                                        placeholder="Add Your Price" />
-                                </div>
-                                <div class="slider-range"></div>
-                            </div>
                         </div>
                         <!-- Top Rated Product Widget -->
                         <div class="widget ltn__top-rated-product-widget d-none">
