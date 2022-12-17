@@ -45,6 +45,7 @@ Route::group(['prefix'=>'masterdata','middleware'=>'auth'],function(){
     Route::resource('brand',BrandController::class);
     Route::resource('type',TypeController::class);
     Route::resource('user',UserController::class);
+    Route::get('company/cart',[CompanyController::class,'cart'])->name('company.cart');
     Route::resource('company',CompanyController::class);
     Route::resource('property',PropertyController::class);
     // admin company

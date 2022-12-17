@@ -137,10 +137,10 @@
                                 <a class="nav-link" id="timeline-tab" data-toggle="pill" href="#property" role="tab"
                                     aria-controls="timeline" aria-selected="false">Property</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" id="activity-tab" data-toggle="pill" href="#report" role="tab"
                                     aria-controls="activity" aria-selected="false">Report</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

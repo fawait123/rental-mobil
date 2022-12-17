@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\Brand;
 use App\Models\Type;
 use App\Models\Property;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -20,9 +21,12 @@ class CompanyController extends Controller
         $company = Company::with('owner')->where('user_id',auth()->user()->id)->first();
         $brand = Brand::get();
         $type = Type::get();
+        $transaction = Transaction::where('company_id',$company->id)->where('status','completed')->get();
         return view('pages.masterdata.company.index',[
             'company'=>$company,
             'count_car'=>Property::where('company_id',$company ? $company->id : null)->count(),
+            'count_transaction'=>count($transaction),
+            'count_income'=> collect($transaction)->sum('total_price'),
             'property'=>Property::with(['car.brand','car.type'])->where('company_id',$company ? $company->id : null)->get()
         ]);
     }
@@ -126,5 +130,90 @@ class CompanyController extends Controller
         }
 
         return abort(404);
+    }
+
+    public function cart(Request $request)
+    {
+        $periode = $this->periode();
+       if($request->type=='transaction'){
+        $data = [];
+        $company = Company::where('user_id',auth()->user()->id)->first();
+        foreach($periode as $p){
+            array_push($data,[
+                'count'=>Transaction::where('company_id',$company->id)->whereBetween('start_order',[date('Y').$p['code'].'01',date('Y').$p['code'].'31'])->count(),
+                'month'=>$p['name']
+            ]);
+        }
+
+        return $data;
+       }
+
+       if($request->type=='income'){
+        $data = [];
+        $company = Company::where('user_id',auth()->user()->id)->first();
+        foreach($periode as $p){
+            $transaction = Transaction::where('company_id',$company->id)->whereBetween('start_order',[date('Y').$p['code'].'01',date('Y').$p['code'].'31'])->get();
+            array_push($data,[
+                'count'=>collect($transaction)->sum('total_price'),
+                'month'=>$p['name']
+            ]);
+        }
+
+        return $data;
+       }
+    }
+
+    public function periode()
+    {
+        return [
+            [
+                "name"=>"Jan",
+                "code"=>"01"
+            ],
+            [
+                "name"=>"Feb",
+                "code"=>"02"
+            ],
+            [
+                "name"=>"Mar",
+                "code"=>"03"
+            ],
+            [
+                "name"=>"Apr",
+                "code"=>"04"
+            ],
+            [
+                "name"=>"Mei",
+                "code"=>"05"
+            ],
+            [
+                "name"=>"Jun",
+                "code"=>"06"
+            ],
+            [
+                "name"=>"Jul",
+                "code"=>"07"
+            ],
+            [
+                "name"=>"Agust",
+                "code"=>"08"
+            ],
+            [
+                "name"=>"Sept",
+                "code"=>"09"
+            ],
+            [
+                "name"=>"Okt",
+                "code"=>"10"
+            ],
+            [
+                "name"=>"Nov",
+                "code"=>"11"
+            ],
+            [
+                "name"=>"Des",
+                "code"=>"12"
+            ]
+        ];
     }
 }
