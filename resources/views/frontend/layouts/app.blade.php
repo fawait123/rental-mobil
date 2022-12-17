@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/toastr.min.css')}}">
     <style>
         .has-errors {
             border-color: red;
@@ -532,6 +533,7 @@
     <script src="{{ asset('assets/frontend/js/plugins.js') }}"></script>
     <!-- Main JS -->
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+    <script src="{{asset('assets/frontend/toastr.min.js')}}"></script>
     <script>
         $(document).ready(function() {
             // modal on Checkout
@@ -681,6 +683,23 @@
             })
         })
     </script>
+    @if ($message = Session::get('message'))
+        <script>
+            toastr.info('{{$message}}')
+        </script>
+    @endif
+
+    @if ($message = Session::get('success'))
+    <script>
+        toastr.success('{{$message}}')
+    </script>
+    @endif
+
+    @if ($message = Session::get('error'))
+    <script>
+        toastr.error('{{$message}}')
+    </script>
+    @endif
 
 </body>
 

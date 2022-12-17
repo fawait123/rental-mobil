@@ -32,14 +32,15 @@
                                         <ul>
                                             <li>
                                                 <div class="product-price">
-                                                    <span>{{ $property->price }}</span>
+                                                    <span>Rp. {{ number_format($property->price, 2, ',', '.') }}</span>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="modal-product-brief">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos repellendus
-                                            repudiandae incidunt quidem pariatur expedita, quo quis modi tempore non.</p>
+                                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos repellendus
+                                            repudiandae incidunt quidem pariatur expedita, quo quis modi tempore non.</p> --}}
+                                        {!! $property->company->location !!}
                                     </div>
 
                                     <div class="ltn__product-details-menu-2 product-cart-wishlist-btn mb-30">
@@ -62,13 +63,13 @@
                                                     </a>
                                                 @endif
                                             </li>
-                                            <li>
-                                                <a href="#" class="btn btn-effect-1 d-add-to-wishlist"
-                                                    title="Add to Cart" data-bs-toggle="modal"
-                                                    data-bs-target="#add_to_cart_modal">
-                                                    <i class="icon-heart"></i>
-                                                </a>
-                                            </li>
+                                            @if (auth()->user())
+                                                <li>
+                                                    <a href="{{ route('product.wishlist.add', $property->id) }}">
+                                                        <i class="icon-heart"></i>
+                                                    </a>
+                                                </li>
+                                            @endif
                                         </ul>
                                     </div>
                                     <div class="modal-product-meta ltn__product-details-menu-1 mb-30">

@@ -21,6 +21,9 @@ Route::group(['prefix'=>'/'],function(){
     Route::get('products',[WelcomeController::class, 'product'])->name('product');
     Route::get('account',[WelcomeController::class, 'account'])->name('account');
     Route::get('products/{id}',[WelcomeController::class, 'detail'])->name('product.detail');
+    Route::get('wishlist',[WelcomeController::class, 'wishlist'])->name('wishlist');
+    Route::get('wishlist/destory/{id}',[WelcomeController::class, 'destroy'])->name('wishlist.destroy');
+    Route::get('products/add-to-whishlist/{id}',[WelcomeController::class, 'addWislisht'])->name('product.wishlist.add');
     Route::get('contact',[WelcomeController::class, 'contact'])->name('contact');
     Route::get('customer/login',[WelcomeController::class, 'login'])->name('frontend.login');
     Route::get('customer/register',[WelcomeController::class, 'register'])->name('frontend.register');
