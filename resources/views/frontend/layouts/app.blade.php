@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/toastr.min.css')}}">
     <style>
         .has-errors {
             border-color: red;
@@ -532,6 +533,7 @@
     <script src="{{ asset('assets/frontend/js/plugins.js') }}"></script>
     <!-- Main JS -->
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+    <script src="{{asset('assets/frontend/toastr.min.js')}}"></script>
     <script>
         $(document).ready(function() {
             // modal on Checkout
@@ -584,12 +586,16 @@
             $('#quick_view_modal').on('show.bs.modal', function(e) {
                 let target = e.relatedTarget
                 let picture = $(target).data('picture');
+                let id = $(target).data('id');
                 let name = $(target).data('name');
                 let price = $(target).data('price');
                 let transmisi = $(target).data('transmisi');
                 let color = $(target).data('color');
                 let fuel = $(target).data('fuel');
                 let seat_capacity = $(target).data('seat_capacity');
+                console.log(id)
+                let route = "{{route('product.detail','__row')}}"
+                route = route.replace('__row',id)
                 let html = `
                 <div class="ltn__quick-view-modal-inner">
                                 <div class="modal-product-item">
@@ -655,11 +661,9 @@
                                                     class="ltn__product-details-menu-2 product-cart-wishlist-btn mb-30">
                                                     <ul>
                                                         <li>
-                                                            <a href="{{ route('frontend.checkout.index') }}"
-                                                                class="theme-btn-1 btn btn-effect-1 d-add-to-cart"
-                                                                title="Checkout" data-bs-toggle="modal"
-                                                                data-bs-target="#add_to_cart_modal">
-                                                                <span>Checkout</span>
+                                                            <a href="${route}" class="theme-btn-1 btn btn-effect-1 d-add-to-cart"
+                                                                title="Checkout">
+                                                                <span>Detail</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -679,16 +683,23 @@
             })
         })
     </script>
-    {{-- @error('start_date')
+    @if ($message = Session::get('message'))
         <script>
-            $("#add_to_cart_modal").modal('show')
+            toastr.info('{{$message}}')
         </script>
-    @enderror --}}
+    @endif
+
+    @if ($message = Session::get('success'))
     <script>
-        $(document).load(function() {
-            $("#add_to_cart_modal").modal('show')
-        });
+        toastr.success('{{$message}}')
     </script>
+    @endif
+
+    @if ($message = Session::get('error'))
+    <script>
+        toastr.error('{{$message}}')
+    </script>
+    @endif
 
 </body>
 

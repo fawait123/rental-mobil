@@ -72,7 +72,7 @@
             <span>Master Data</span>
         </li>
         <li>
-            <a href="{{ route('company.index') }}" class="{{ Request::is('masterdata/companies*') ? 'active' : '' }}">
+            <a href="{{ route('company.index') }}" class="{{ Request::is('masterdata/company*') ? 'active' : '' }}">
                 <span data-feather="server" class="nav-icon"></span>
                 <span class="menu-text">Company</span>
             </a>

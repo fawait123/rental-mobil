@@ -23,8 +23,8 @@
                                                         {{ number_format($item->property->price, 2, ',', '.') }}</p>
                                                 </div>
                                                 <div class="btn-wrapper animated">
-                                                    <a href="service.html" class="theme-btn-1 btn btn-round">Order
-                                                        Now</a>
+                                                    <a href="{{ route('product.detail', $item->id) }}"
+                                                        class="theme-btn-1 btn btn-round">Detail</a>
                                                 </div>
                                             </div>
                                         </div>

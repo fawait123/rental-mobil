@@ -19,6 +19,11 @@ use App\Http\Controllers\TransactionController as AdminTransactionController;
 Route::group(['prefix'=>'/'],function(){
     Route::get('/',[WelcomeController::class,'index'])->name('welcome');
     Route::get('products',[WelcomeController::class, 'product'])->name('product');
+    Route::get('account',[WelcomeController::class, 'account'])->name('account');
+    Route::get('products/{id}',[WelcomeController::class, 'detail'])->name('product.detail');
+    Route::get('wishlist',[WelcomeController::class, 'wishlist'])->name('wishlist');
+    Route::get('wishlist/destory/{id}',[WelcomeController::class, 'destroy'])->name('wishlist.destroy');
+    Route::get('products/add-to-whishlist/{id}',[WelcomeController::class, 'addWislisht'])->name('product.wishlist.add');
     Route::get('contact',[WelcomeController::class, 'contact'])->name('contact');
     Route::get('customer/login',[WelcomeController::class, 'login'])->name('frontend.login');
     Route::get('customer/register',[WelcomeController::class, 'register'])->name('frontend.register');
@@ -43,6 +48,7 @@ Route::group(['prefix'=>'masterdata','middleware'=>'auth'],function(){
     Route::resource('brand',BrandController::class);
     Route::resource('type',TypeController::class);
     Route::resource('user',UserController::class);
+    Route::get('company/cart',[CompanyController::class,'cart'])->name('company.cart');
     Route::resource('company',CompanyController::class);
     Route::resource('property',PropertyController::class);
     // admin company
