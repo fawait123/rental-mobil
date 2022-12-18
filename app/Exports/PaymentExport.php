@@ -2,15 +2,23 @@
 
 namespace App\Exports;
 
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class PaymentExport implements FromCollection
+class PaymentExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    protected $data;
+
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
+    }
+
+
+    public function view(): View
+    {
+        return view('exports.payment.index', [
+            'payment' => $this->data,
+        ]);
     }
 }

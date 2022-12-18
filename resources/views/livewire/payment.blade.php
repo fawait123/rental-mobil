@@ -8,6 +8,11 @@
                             <h4 class="text-capitalize fw-500 breadcrumb-title">Data List</h4>
                             <span class="sub-title ml-sm-25 pl-sm-25"></span>
                         </div>
+                        <div class="action-btn mt-sm-0 mt-15">
+                            <button wire:click="download" class="btn px-20 btn-primary ">
+                                <i class="las la-download fs-16"></i>Download
+                            </button>
+                        </div>
                     </div>
                     <div class="breadcrumb-main__wrapper">
 
