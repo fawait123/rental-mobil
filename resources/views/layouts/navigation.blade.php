@@ -70,15 +70,15 @@
             <span>Report</span>
         </li>
         <li>
-            <a href="{{ route('report.transaction.index') }}"
-                class="{{ Request::is('report/transaction*') ? 'active' : '' }}">
+            <a href="{{ route('admin.report.transaction.index') }}"
+                class="{{ Request::is('admin/report/transaction*') ? 'active' : '' }}">
                 <span data-feather="printer" class="nav-icon"></span>
                 <span class="menu-text">Report Transaction</span>
             </a>
         </li>
         <li>
-            <a href="{{ route('report.payment.index') }}"
-                class="{{ Request::is('report/payment*') ? 'active' : '' }}">
+            <a href="{{ route('admin.report.payment.index') }}"
+                class="{{ Request::is('admin/report/payment*') ? 'active' : '' }}">
                 <span data-feather="rss" class="nav-icon"></span>
                 <span class="menu-text">Report Payment</span>
             </a>

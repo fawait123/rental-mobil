@@ -81,3 +81,9 @@ Route::group(['prefix'=>'report','middleware'=>'auth'],function(){
     Route::get('/transaction',[ReportController::class,'transaction'])->name('report.transaction.index');
     Route::get('/payment',[ReportController::class,'payment'])->name('report.payment.index');
 });
+
+ // report admin
+ Route::group(['prefix'=>'admin/report','middleware'=>'auth'],function(){
+    Route::get('/transaction',[ReportController::class,'transactionAdmin'])->name('admin.report.transaction.index');
+    Route::get('/payment',[ReportController::class,'paymentAdmin'])->name('admin.report.payment.index');
+});

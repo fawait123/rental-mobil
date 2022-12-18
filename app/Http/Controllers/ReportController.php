@@ -15,4 +15,15 @@ class ReportController extends Controller
     {
         return view('pages.report.payment.index');
     }
+
+    public function transactionAdmin()
+    {
+        return view('pages.report.transaction.admin');
+    }
+
+
+    public function paymentAdmin()
+    {
+        return view('pages.report.payment.admin');
+    }
 }
