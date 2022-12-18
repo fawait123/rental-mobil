@@ -81,27 +81,27 @@
             <li>
                 <a href="{{ route('property.index') }}"
                     class="{{ Request::is('masterdata/property*') ? 'active' : '' }}">
-                    <span data-feather="server" class="nav-icon"></span>
+                    <span data-feather="aperture" class="nav-icon"></span>
                     <span class="menu-text">Manage Property</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('transaction.index') }}" class="{{ Request::is('transaction*') ? 'active' : '' }}">
-                    <span data-feather="server" class="nav-icon"></span>
+                    <span data-feather="compass" class="nav-icon"></span>
                     <span class="menu-text">Transaction</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('report.transaction.index') }}"
                     class="{{ Request::is('report/transaction*') ? 'active' : '' }}">
-                    <span data-feather="server" class="nav-icon"></span>
+                    <span data-feather="printer" class="nav-icon"></span>
                     <span class="menu-text">Report Transaction</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('report.payment.index') }}"
                     class="{{ Request::is('report/payment*') ? 'active' : '' }}">
-                    <span data-feather="server" class="nav-icon"></span>
+                    <span data-feather="rss" class="nav-icon"></span>
                     <span class="menu-text">Report Payment</span>
                 </a>
             </li>
