@@ -152,7 +152,7 @@ class CompanyController extends Controller
         $data = [];
         $company = Company::where('user_id',auth()->user()->id)->first();
         foreach($periode as $p){
-            $transaction = Transaction::where('company_id',$company->id)->whereBetween('start_order',[date('Y').$p['code'].'01',date('Y').$p['code'].'31'])->get();
+            $transaction = Transaction::where('company_id',$company->id)->where('status','completed')->whereBetween('start_order',[date('Y').$p['code'].'01',date('Y').$p['code'].'31'])->get();
             array_push($data,[
                 'count'=>collect($transaction)->sum('total_price'),
                 'month'=>$p['name']

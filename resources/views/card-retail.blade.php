@@ -4,13 +4,8 @@
         <div class="ap-po-details p-25 radius-xl bg-white d-flex justify-content-between">
             <div>
                 <div class="overview-content">
-                    <h1>7,461</h1>
+                    <h1>{{ $count_transaction }}</h1>
                     <p>Total Transaction</p>
-                    <div class="ap-po-details-time">
-                        <span class="color-success"><i class="las la-arrow-up"></i>
-                            <strong>25%</strong></span>
-                        <small>Since last week</small>
-                    </div>
                 </div>
 
             </div>
@@ -31,26 +26,16 @@
         <div class="ap-po-details p-25 radius-xl bg-white d-flex justify-content-between">
             <div>
                 <div class="overview-content">
-                    <h1>$28,947</h1>
+                    <h1>{{ $count_car }}</h1>
                     <p>Total Car</p>
-                    <div class="ap-po-details-time">
-                        <span class="color-success"><i class="las la-arrow-up"></i>
-                            <strong>25%</strong></span>
-                        <small>Since last week</small>
-                    </div>
                 </div>
-
             </div>
             <div class="ap-po-timeChart">
                 <div class="overview-single__chart d-md-flex align-items-end">
                     <div class="parentContainer">
-
-
                         <div>
                             <canvas id="mychart9"></canvas>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -62,26 +47,17 @@
         <div class="ap-po-details p-25 radius-xl bg-white d-flex justify-content-between">
             <div>
                 <div class="overview-content">
-                    <h1>$3,241</h1>
+                    <h1>Rp. {{ number_format($count_income, 2, ',', '.') }}</h1>
                     <p>Total Income</p>
-                    <div class="ap-po-details-time">
-                        <span class="color-danger"><i class="las la-arrow-down"></i>
-                            <strong>25%</strong></span>
-                        <small>Since last week</small>
-                    </div>
                 </div>
 
             </div>
             <div class="ap-po-timeChart">
                 <div class="overview-single__chart d-md-flex align-items-end">
                     <div class="parentContainer">
-
-
                         <div>
                             <canvas id="mychart10"></canvas>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -93,31 +69,6 @@
             <div class="card-header">
                 <h6>Total Revenue</h6>
                 <div class="card-extra">
-                    <ul class="card-tab-links mr-3 nav-tabs nav" role="tablist">
-                        <li>
-                            <a href="#tl_revenue-week" data-toggle="tab" id="tl_revenue-week-tab" role="tab"
-                                aria-selected="false">Week</a>
-                        </li>
-                        <li>
-                            <a href="#tl_revenue-month" data-toggle="tab" id="tl_revenue-month-tab" role="tab"
-                                aria-selected="false">Month</a>
-                        </li>
-                        <li>
-                            <a class="active" href="#tl_revenue-year" data-toggle="tab" id="tl_revenue-year-tab"
-                                role="tab" aria-selected="true">Year</a>
-                        </li>
-                    </ul>
-                    <div class="dropdown dropleft">
-                        <a href="#" role="button" id="revenue1" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <span data-feather="more-horizontal"></span>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="revenue1">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!-- ends: .card-header -->
@@ -125,79 +76,41 @@
                 <div class="tab-content">
                     <div class="tab-pane fade" id="tl_revenue-week" role="tabpanel"
                         aria-labelledby="tl_revenue-week-tab">
-                        <div class="revenue-labels">
-                            <div>
-                                <strong class="text-primary">$72,848</strong>
-                                <span>Current Period</span>
-                            </div>
-                            <div>
-                                <strong>$52,458</strong>
-                                <span>Previous Period</span>
-                            </div>
-                        </div>
                         <!-- ends: .performance-stats -->
 
                         <div class="wp-chart">
                             <div class="parentContainer">
-
-
                                 <div>
-                                    <canvas id="myChart6W"></canvas>
+                                    <canvas id="mychart8"></canvas>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="tl_revenue-month" role="tabpanel"
                         aria-labelledby="tl_revenue-month-tab">
                         <div class="revenue-labels">
-                            <div>
-                                <strong class="text-primary">$72,848</strong>
-                                <span>Current Period</span>
-                            </div>
-                            <div>
-                                <strong>$52,458</strong>
-                                <span>Previous Period</span>
-                            </div>
                         </div>
                         <!-- ends: .performance-stats -->
 
                         <div class="wp-chart">
                             <div class="parentContainer">
-
-
                                 <div>
-                                    <canvas id="myChart6M"></canvas>
+                                    <canvas id="mychart8"></canvas>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade active show" id="tl_revenue-year" role="tabpanel"
                         aria-labelledby="tl_revenue-year-tab">
                         <div class="revenue-labels">
-                            <div>
-                                <strong class="text-primary">$72,848</strong>
-                                <span>Current Period</span>
-                            </div>
-                            <div>
-                                <strong>$52,458</strong>
-                                <span>Previous Period</span>
-                            </div>
                         </div>
                         <!-- ends: .performance-stats -->
 
                         <div class="wp-chart">
                             <div class="parentContainer">
-
-
                                 <div>
-                                    <canvas id="myChart6"></canvas>
+                                    <canvas id="mychart88"></canvas>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -209,3 +122,42 @@
     </div>
 </div>
 <!-- ends: .row -->
+
+
+@push('customjs')
+    <script>
+        $.ajax({
+            url: '{{ route('company.cart') }}',
+            method: 'get',
+            data: {
+                type: 'transaction'
+            },
+            success: function(res) {
+                let labelCart = res.map((el) => el.month)
+                let dataCart = res.map((el) => el.count)
+                console.log(res)
+                chartjsLineChartFour(
+                    "mychart88",
+                    (bcolor = "#FA8B0C"),
+                    (height = "250"),
+                    (data = dataCart),
+                    (data = dataCart),
+                    labels = labelCart,
+                );
+                chartJsBarChartThree("mychart8", "#FF69A520", "#FF69A5", "Transaction", labelCart, dataCart);
+            }
+        })
+        $.ajax({
+            url: '{{ route('company.cart') }}',
+            method: 'get',
+            data: {
+                type: 'income'
+            },
+            success: function(res) {
+                let labelCart = res.map((el) => el.month)
+                let dataCart = res.map((el) => el.count)
+                chartJsBarChartThree("mychart10", "#20C99720", "#20C997", "Avg. Order", labelCart, dataCart);
+            }
+        })
+    </script>
+@endpush
