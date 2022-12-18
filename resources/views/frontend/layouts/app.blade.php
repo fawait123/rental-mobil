@@ -219,41 +219,41 @@
                 </div>
                 <div class="mini-cart-footer">
                     @foreach ($item->payment->detail as $row)
-                       @if (count($row->midtrans) > 0)
+                       @if ($row->midtrans)
                        <p>Payment Detail</p>
-                            @foreach ($row->midtrans as $el)
                                 <div class="mini-cart-sub-total">
-                                    <h5>Nominal : <span class="text-secondary text-sm">Rp. {{number_format($el->gross_amount,2,',','.')}}</span></h5>
+                                    <h5>Nominal : <span class="text-secondary text-sm">Rp. {{number_format($row->midtrans->gross_amount,2,',','.')}}</span></h5>
                                 </div>
                                 <div class="mini-cart-sub-total">
-                                    <h5>Bank Transfer : <span class="text-secondary text-sm" style="text-transform: uppercase">{{$el->bank}}</span></h5>
+                                    <h5>Bank Transfer : <span class="text-secondary text-sm" style="text-transform: uppercase">{{$row->midtrans->bank}}</span></h5>
                                 </div>
                                 <div class="mini-cart-sub-total">
-                                    <h5>VA Number : <span class="text-secondary text-sm">{{$el->va_number}}</span></h5>
+                                    <h5>VA Number : <span class="text-secondary text-sm">{{$row->midtrans->va_number}}</span></h5>
                                 </div>
                                 <div class="mini-cart-sub-total">
-                                    <h5>Transaction Status : <span class="text-secondary text-sm">{{$el->transaction_status}}</span></h5>
+                                    <h5>Transaction Status : <span class="text-secondary text-sm">{{$row->midtrans->transaction_status}}</span></h5>
                                 </div>
                                 <div class="mini-cart-sub-total">
-                                    <h5>Expired : <span class="text-secondary text-sm">{{$el->expire_time}}</span></h5>
+                                    <h5>Expired : <span class="text-secondary text-sm">{{$row->midtrans->expire_time}}</span></h5>
                                 </div>
-                            @endforeach
                        @else
                        <div class="mini-cart-sub-total">
-                        <h5>Subtotal: <span>Rp. {{number_format($item->total_price,2,',','.')}}</span></h5>
+                        <h5>Subtotal: <span>Rp. {{number_format($row->nominal,2,',','.')}}</span></h5>
                         </div>
                         <div class="mini-cart-sub-total">
                             <h5>Payment Type: <span class="text-secondary">{{$item->payment->type}}</span></h5>
                         </div>
                         <div class="mini-cart-sub-total">
-                            <h5>Status Payment: <span class="text-{{$item->payment->status == 'paid' ? 'success' : 'danger'}}">{{$item->payment->status}}</span></h5>
+                            <h5>Status Payment: <span class="text-{{$row->status == 'paid' ? 'success' : 'danger'}}">{{$row->status}}</span></h5>
                         </div>
                         <div class="mini-cart-sub-total">
-                            <h5>Note: <span class="text-secondary text-sm">{{$item->note}}</span></h5>
+                            <h5>Note: <span class="text-secondary text-sm">{{$row->note}}</span></h5>
                         </div>
+                            @if ($item->payment->type=='payment gateway')
                             <div class="btn-wrapper">
-                                <a href="{{route('frontend.pay',$row->id)}}" class="theme-btn-1 btn btn-effect-1">Pay Now</a>
+                                    <a href="{{route('frontend.pay',$row->id)}}" class="theme-btn-1 btn btn-effect-1">Pay Now</a>
                             </div>
+                            @endif
                        @endif
                     @endforeach
                     <br>

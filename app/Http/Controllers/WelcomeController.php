@@ -221,6 +221,12 @@ class WelcomeController extends Controller
                 Midtrans::where('order_id', $order)->update([
                     'transaction_status' => $notification,
                 ]);
+
+                $midtrans = Midtrans::where('order_id', $order)->first();
+                PaymentDetail::where('id',$midtrans->payment_detail_id)->update([
+                    'status'=>'paid'
+                ]);
+
                 return response()
                 ->json([
                     'success' => true,
@@ -235,6 +241,7 @@ class WelcomeController extends Controller
                 Midtrans::where('order_id', $order)->update([
                     'transaction_status' => $notification,
                 ]);
+
                 return response()
                 ->json([
                     'success' => true,

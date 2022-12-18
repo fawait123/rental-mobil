@@ -18,6 +18,6 @@ class PaymentDetail extends Model
 
     public function midtrans()
     {
-        return $this->hasMany(MidTrans::class,'payment_detail_id');
+        return $this->hasOne(MidTrans::class,'payment_detail_id');
     }
 }

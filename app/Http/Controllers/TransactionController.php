@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Company;
 use App\Models\Payment;
+use App\Models\PaymentDetail;
 use App\Models\Property;
 
 class TransactionController extends Controller
@@ -49,7 +50,7 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        $transaction = Transaction::with(['customer','company','property.car'])->find($id);
+        $transaction = Transaction::with(['customer','company','property.car','payment.detail.midtrans'])->find($id);
         $company = Company::where('user_id',auth()->user()->id)->first();
         if($transaction){
             return view('pages.transaction.invoice',[
@@ -82,8 +83,8 @@ class TransactionController extends Controller
     public function update(Request $request, $id)
     {
         if($request->type=='pay'){
-            $transaction = Transaction::find($id);
-            Payment::where('transaction_id',$transaction->id)->update([
+            // $transaction = Transaction::find($id);
+            PaymentDetail::where('id',$id)->update([
                 'status'=>'paid'
             ]);
 

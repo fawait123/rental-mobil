@@ -111,14 +111,13 @@ class TransactionController extends Controller
                 'transaction_id'=>$transaction->id,
                 'total_price'=>$total,
                 'type'=>$request->payment,
-                'status'=>'unpaid'
             ]);
 
             PaymentDetail::create([
                 'payment_id'=>$payment->id,
                 'step'=>1,
                 'nominal'=>$total,
-                'status'=>false
+                'status'=>'unpaid'
             ]);
 
             Property::where('id',$item->associatedModel->id)->update([

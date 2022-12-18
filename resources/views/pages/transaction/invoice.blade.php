@@ -26,12 +26,7 @@
                                 <p>Status : <span>{{ $transaction->status }}</span></p>
                             </div>
                         </div><!-- End: .d-flex -->
-                        <div class="d-flex justify-content-center mb-lg-0 mb-25">
-                            <div class="payment-invoice-qr__code bg-white radius-xl p-20">
-                                <p>Payment Method : {{ $transaction->payment->type }}</p>
-                                <p>Payment Status : {{ $transaction->payment->status }}</p>
-                            </div>
-                        </div><!-- End: .d-flex -->
+
                         <div class="d-flex justify-content-center">
                             <div class="payment-invoice-qr__address">
                                 <p>Invoice To:</p>
@@ -40,7 +35,7 @@
                                 <span>{{ $transaction->customer->telp }}</span><br>
                                 <span>{{ $transaction->customer->email }}</span>
                             </div>
-                        </div><!-- End: .d-flex -->
+                        </div>
                     </div><!-- End: .payment-invoice-qr -->
                     <div class="payment-invoice-table">
                         <div class="table-responsive">
@@ -67,7 +62,6 @@
                                                         </p>
                                                         <p>color:<span>{{ $transaction->property->car->color }}</span>
                                                         </p>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -85,52 +79,85 @@
                                         <td class="order-summery float-right">
                                             <div class="total">
                                                 <div class="subtotalTotal mb-0 text-right">
-                                                    Subtotal :
+                                                    Total :
                                                 </div>
                                             </div>
-                                            <div
-                                                class="total-money d-flex justify-content-between align-items-center mt-2 text-right float-right">
-                                                <h6>Total :</h6>
-                                            </div>
                                         </td>
-
                                         <td>
                                             <div class="total-order float-right text-right fs-14 fw-500">
                                                 <p>Rp. {{ number_format($transaction->total_price, 2, ',', '.') }}</p>
-                                                <h5 class="text-primary">
-                                                    Rp. {{ number_format($transaction->total_price, 2, ',', '.') }}</h5>
                                             </div>
                                         </td>
                                     </tr>
                                 </tfoot>
                             </table>
+
+                            <table id="cart" class="table table-borderless">
+                                <thead>
+                                    <tr class="product-cart__header">
+                                        <th scope="col">#</th>
+                                        @if ($transaction->payment->type != 'payment gateway')
+                                            <th scope="col">Payment Type</th>
+                                        @endif
+                                        @if ($transaction->payment->type == 'payment gateway')
+                                            <th scope="col">Bank</th>
+                                            <th scope="col">VA Number</th>
+                                        @endif
+                                        <th scope="col">Sub Total</th>
+                                        <th scope="col">Payment Status</th>
+                                        @if ($transaction->payment->type != 'payment gateway')
+                                            <th scope="col">Action</th>
+                                        @endif
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($transaction->payment->detail as $item)
+                                        <tr>
+                                            <th>1</th>
+                                            @if ($transaction->payment->type != 'payment gateway')
+                                                <td>
+                                                    {{ $transaction->payment->type }}
+                                                </td>
+                                            @endif
+                                            @if ($transaction->payment->type == 'payment gateway')
+                                                <td style="text-transform: uppercase">{{ $item->midtrans->bank }}</td>
+                                                <td>{{ $item->midtrans->va_number }}</td>
+                                            @endif
+                                            <td>Rp. {{ number_format($item->nominal, 2, ',', '.') }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            @if ($transaction->payment->type != 'payment gateway')
+                                                <td>
+                                                    <button type="button"
+                                                        onclick="event.preventDefault(); document.getElementById('form-pay{{ $loop->iteration }}').submit()"
+                                                        class="btn-primary btn-sm btn rounded-pill px-25 text-white">
+                                                        <span data-feather="dollar-sign"></span>Pay Now</button>
+                                                </td>
+                                                <form action="{{ route('transaction.update', $item->id) }}" method="POST"
+                                                    id="form-pay{{ $loop->iteration }}">
+                                                    @csrf
+                                                    @method('put')
+                                                    <input type="hidden" name="type" value="pay">
+                                                </form>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                         <div class="payment-invoice__btn mt-lg-50 pt-lg-30 mt-30 pt-20">
-                            <button type="button"
-                                onclick="event.preventDefault(); document.getElementById('form-pay').submit()"
-                                class="btn border rounded-pill bg-normal text-gray px-25">
-                                <span data-feather="dollar-sign"></span>Pay Now</button>
-                            <button type="button" class="btn border rounded-pill bg-normal text-gray px-25">
-                                <span data-feather="send"></span>invoice</button>
                             <button type="button"
                                 onclick="event.preventDefault(); document.getElementById('form-transaction').submit()"
                                 class="btn border rounded-pill bg-normal text-gray px-25">
                                 <span data-feather="check-circle"></span>Transaction Completed ?</button>
-                            <button type="button" class="btn-primary btn rounded-pill px-25 text-white download"
+                            {{-- <button type="button" class="btn-primary btn rounded-pill px-25 text-white download"
                                 onclick="window.location.href='{{ route('transaction.download', $transaction->id) }}'">
-                                <span data-feather="upload"></span>download</button>
+                                <span data-feather="upload"></span>download</button> --}}
                         </div>
                     </div><!-- End: .payment-invoice-table -->
                 </div><!-- End: .payment-invoice__body -->
             </div><!-- End: .payment-invoice -->
         </div><!-- End: .col -->
     </div>
-    <form action="{{ route('transaction.update', $transaction->id) }}" method="POST" id="form-pay">
-        @csrf
-        @method('put')
-        <input type="hidden" name="type" value="pay">
-    </form>
-
     <form action="{{ route('transaction.update', $transaction->id) }}" method="POST" id="form-transaction">
         @csrf
         @method('put')
