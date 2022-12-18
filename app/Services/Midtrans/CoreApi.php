@@ -6,45 +6,17 @@ namespace App\Services\Midtrans;
 use Midtrans\CoreApi as CoreApiMidtrans;
 
 
-class CoreApi extends Midtrans{
-    protected $order;
+class CoreApi extends Midtrans {
 
-    public function __construct($order)
+    public function __construct()
     {
         parent::__construct();
-        $this->order = $order;
     }
 
-    public function charge()
+    public function charge($params)
     {
-        $params = [
-            'transaction_details' => [
-                'order_id' => $this->order->number,
-                'gross_amount' => $this->order->total_price,
-            ],
-            'item_details' => [
-                [
-                    'id' => 1,
-                    'price' => '150000',
-                    'quantity' => 1,
-                    'name' => 'Flashdisk Toshiba 32GB',
-                ],
-                [
-                    'id' => 2,
-                    'price' => '60000',
-                    'quantity' => 2,
-                    'name' => 'Memory Card VGEN 4GB',
-                ],
-            ],
-            'customer_details' => [
-                'first_name' => 'Martin Mulyo Syahidin',
-                'email' => 'mulyosyahidin95@gmail.com',
-                'phone' => '081234567890',
-            ]
-        ];
+        $snapToken = CoreApiMidtrans::charge($params);
 
-        $coreApi = CoreApiMidtrans::charge($params);
-
-        return $coreApi;
+        return $snapToken;
     }
 }

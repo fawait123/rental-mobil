@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Midtrans extends Model
 {
     use HasFactory;
+    protected $table = 'midtrans';
     protected $guarded = ['id'];
 }

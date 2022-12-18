@@ -27,7 +27,9 @@ Route::group(['prefix'=>'/'],function(){
     Route::get('contact',[WelcomeController::class, 'contact'])->name('contact');
     Route::get('customer/login',[WelcomeController::class, 'login'])->name('frontend.login');
     Route::get('customer/register',[WelcomeController::class, 'register'])->name('frontend.register');
-    Route::get('pay',[WelcomeController::class, 'pay'])->name('frontend.pay');
+    Route::get('pay/{id}',[WelcomeController::class, 'pay'])->name('frontend.pay');
+    Route::post('pay',[WelcomeController::class, 'payment'])->name('frontend.payment');
+    Route::post('pay/notification',[WelcomeController::class, 'notification'])->name('frontend.notification');
     // auth
     Route::post('customer/register',[AuthController::class, 'actionRegister'])->name('frontend.register.store');
     Route::post('customer/login',[AuthController::class, 'actionLogin'])->name('frontend.register.action');
