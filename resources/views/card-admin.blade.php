@@ -4,13 +4,8 @@
         <div class="ap-po-details p-25 radius-xl bg-white d-flex justify-content-between">
             <div>
                 <div class="overview-content">
-                    <h1>7,461</h1>
+                    <h1>{{ $count_company }}</h1>
                     <p>Total Company</p>
-                    <div class="ap-po-details-time">
-                        <span class="color-success"><i class="las la-arrow-up"></i>
-                            <strong>25%</strong></span>
-                        <small>Since last week</small>
-                    </div>
                 </div>
 
             </div>
@@ -31,26 +26,17 @@
         <div class="ap-po-details p-25 radius-xl bg-white d-flex justify-content-between">
             <div>
                 <div class="overview-content">
-                    <h1>$28,947</h1>
+                    <h1>{{ $count_transaction }}</h1>
                     <p>Total Transaction</p>
-                    <div class="ap-po-details-time">
-                        <span class="color-success"><i class="las la-arrow-up"></i>
-                            <strong>25%</strong></span>
-                        <small>Since last week</small>
-                    </div>
                 </div>
 
             </div>
             <div class="ap-po-timeChart">
                 <div class="overview-single__chart d-md-flex align-items-end">
                     <div class="parentContainer">
-
-
                         <div>
                             <canvas id="mychart9"></canvas>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -62,26 +48,17 @@
         <div class="ap-po-details p-25 radius-xl bg-white d-flex justify-content-between">
             <div>
                 <div class="overview-content">
-                    <h1>$3,241</h1>
+                    <h1>{{ $count_car }}</h1>
                     <p>Total Car</p>
-                    <div class="ap-po-details-time">
-                        <span class="color-danger"><i class="las la-arrow-down"></i>
-                            <strong>25%</strong></span>
-                        <small>Since last week</small>
-                    </div>
                 </div>
 
             </div>
             <div class="ap-po-timeChart">
                 <div class="overview-single__chart d-md-flex align-items-end">
                     <div class="parentContainer">
-
-
                         <div>
                             <canvas id="mychart10"></canvas>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -93,13 +70,8 @@
         <div class="ap-po-details p-25 radius-xl bg-white d-flex justify-content-between">
             <div>
                 <div class="overview-content">
-                    <h1>45.32k</h1>
+                    <h1>{{ $count_user }}</h1>
                     <p>Total User</p>
-                    <div class="ap-po-details-time">
-                        <span class="color-success"><i class="las la-arrow-up"></i>
-                            <strong>35%</strong></span>
-                        <small>Since last week</small>
-                    </div>
                 </div>
 
             </div>
@@ -170,13 +142,9 @@
 
                         <div class="wp-chart">
                             <div class="parentContainer">
-
-
                                 <div>
                                     <canvas id="myChart6W"></canvas>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -196,13 +164,9 @@
 
                         <div class="wp-chart">
                             <div class="parentContainer">
-
-
                                 <div>
                                     <canvas id="myChart6M"></canvas>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -222,13 +186,9 @@
 
                         <div class="wp-chart">
                             <div class="parentContainer">
-
-
                                 <div>
                                     <canvas id="myChart6"></canvas>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>

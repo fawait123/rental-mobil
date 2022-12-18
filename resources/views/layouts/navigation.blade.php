@@ -66,6 +66,23 @@
                 <span class="menu-text">List Car</span>
             </a>
         </li>
+        <li class="menu-title m-top-30">
+            <span>Report</span>
+        </li>
+        <li>
+            <a href="{{ route('report.transaction.index') }}"
+                class="{{ Request::is('report/transaction*') ? 'active' : '' }}">
+                <span data-feather="printer" class="nav-icon"></span>
+                <span class="menu-text">Report Transaction</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('report.payment.index') }}"
+                class="{{ Request::is('report/payment*') ? 'active' : '' }}">
+                <span data-feather="rss" class="nav-icon"></span>
+                <span class="menu-text">Report Payment</span>
+            </a>
+        </li>
     @endif
     @if (auth()->user()->role == 'retail')
         <li class="menu-title m-top-30">
@@ -90,6 +107,9 @@
                     <span data-feather="compass" class="nav-icon"></span>
                     <span class="menu-text">Transaction</span>
                 </a>
+            </li>
+            <li class="menu-title m-top-30">
+                <span>Report</span>
             </li>
             <li>
                 <a href="{{ route('report.transaction.index') }}"
