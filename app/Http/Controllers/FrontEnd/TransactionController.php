@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Property;
 use App\Models\Transaction;
 use App\Models\Payment;
+use App\Models\PaymentDetail;
 use Carbon\Carbon;
 
 class TransactionController extends Controller
@@ -106,10 +107,16 @@ class TransactionController extends Controller
                 'invoice' =>$this->invoice()
             ]);
 
-            Payment::create([
+            $payment = Payment::create([
                 'transaction_id'=>$transaction->id,
                 'total_price'=>$total,
                 'type'=>$request->payment,
+            ]);
+
+            PaymentDetail::create([
+                'payment_id'=>$payment->id,
+                'step'=>1,
+                'nominal'=>$total,
                 'status'=>'unpaid'
             ]);
 

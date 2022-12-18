@@ -218,18 +218,47 @@
                     </div>
                 </div>
                 <div class="mini-cart-footer">
-                    <div class="mini-cart-sub-total">
-                        <h5>Subtotal: <span>Rp. {{number_format($item->total_price,2,',','.')}}</span></h5>
-                    </div>
-                    <div class="mini-cart-sub-total">
-                        <h5>Payment Type: <span class="text-secondary">{{$item->payment->type}}</span></h5>
-                    </div>
-                    <div class="mini-cart-sub-total">
-                        <h5>Status Payment: <span class="text-{{$item->payment->status == 'paid' ? 'success' : 'danger'}}">{{$item->payment->status}}</span></h5>
-                    </div>
-                    <div class="mini-cart-sub-total">
-                        <h5>Note: <span class="text-secondary text-sm">{{$item->note}}</span></h5>
-                    </div>
+                    @foreach ($item->payment->detail as $row)
+                       @if ($row->midtrans)
+                       <p>Payment Detail</p>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Nominal : <span class="text-secondary text-sm">Rp. {{number_format($row->midtrans->gross_amount,2,',','.')}}</span></h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Bank Transfer : <span class="text-secondary text-sm" style="text-transform: uppercase">{{$row->midtrans->bank}}</span></h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>VA Number : <span class="text-secondary text-sm">{{$row->midtrans->va_number}}</span></h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Transaction Status : <span class="text-secondary text-sm">{{$row->midtrans->transaction_status}}</span></h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Expired : <span class="text-secondary text-sm">{{$row->midtrans->expire_time}}</span></h5>
+                                </div>
+                       @else
+                       <div class="mini-cart-sub-total">
+                        <h5>Subtotal: <span>Rp. {{number_format($row->nominal,2,',','.')}}</span></h5>
+                        </div>
+                        <div class="mini-cart-sub-total">
+                            <h5>Payment Type: <span class="text-secondary">{{$item->payment->type}}</span></h5>
+                        </div>
+                        <div class="mini-cart-sub-total">
+                            <h5>Status Payment: <span class="text-{{$row->status == 'paid' ? 'success' : 'danger'}}">{{$row->status}}</span></h5>
+                        </div>
+                        <div class="mini-cart-sub-total">
+                            <h5>Note: <span class="text-secondary text-sm">{{$row->note}}</span></h5>
+                        </div>
+                            @if ($item->payment->type=='payment gateway')
+                            <div class="btn-wrapper">
+                                    <a href="{{route('frontend.pay',$row->id)}}" class="theme-btn-1 btn btn-effect-1">Pay Now</a>
+                            </div>
+                            @endif
+                       @endif
+                    @endforeach
+                    <br>
+                    <br>
+                    <p>Click pay to make payment</p>
                 </div>
                 @endforeach
             </div>
