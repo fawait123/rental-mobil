@@ -11,6 +11,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\RecomendedController;
 use App\Http\Controllers\OtherController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\FrontEnd\AuthController;
 use App\Http\Controllers\FrontEnd\TransactionController;
 use App\Http\Controllers\TransactionController as AdminTransactionController;
@@ -73,4 +74,10 @@ Route::group(['prefix'=>'admin/frontend','middleware'=>'auth'],function(){
     Route::resource('banner',BannerController::class);
     Route::resource('recomended',RecomendedController::class);
     Route::resource('other',OtherController::class);
+});
+
+// reoute report
+Route::group(['prefix'=>'report','middleware'=>'auth'],function(){
+    Route::get('/transaction',[ReportController::class,'transaction'])->name('report.transaction.index');
+    Route::get('/payment',[ReportController::class,'payment'])->name('report.payment.index');
 });
