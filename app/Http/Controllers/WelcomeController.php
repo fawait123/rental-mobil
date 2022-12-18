@@ -136,4 +136,16 @@ class WelcomeController extends Controller
         }
         return abort(404);
     }
+
+    public function pay(Request $request)
+    {
+        $transaction = [];
+        $customer = Customer::where('user_id',auth()->user()->id)->first();
+        if(auth()->user()){
+            $transaction = Transaction::with(['property.car','payment'])->where('customer_id',$customer->id)->where('status','process')->get();
+        }
+        return view('frontend.pages.pay.index',[
+            'transaction'=>$transaction,
+        ]);
+    }
 }

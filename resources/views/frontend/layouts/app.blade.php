@@ -230,6 +230,10 @@
                     <div class="mini-cart-sub-total">
                         <h5>Note: <span class="text-secondary text-sm">{{$item->note}}</span></h5>
                     </div>
+                    <div class="btn-wrapper">
+                        <a href="cart.html" class="theme-btn-1 btn btn-effect-1">Pay Now</a>
+                    </div>
+                    <p>Click pay to make payment</p>
                 </div>
                 @endforeach
             </div>
