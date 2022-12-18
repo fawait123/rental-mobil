@@ -2,15 +2,24 @@
 
 namespace App\Exports;
 
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class TransactionExport implements FromCollection
+class TransactionExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    protected $data;
+
+
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
+    }
+
+
+    public function view(): View
+    {
+        return view('exports.transaction.index', [
+            'transaction' => $this->data,
+        ]);
     }
 }
