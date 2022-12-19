@@ -120,10 +120,10 @@
                                                         <div class="form-group mb-20">
                                                             <label for="username">username</label>
                                                             <input type="text"
-                                                                class="form-control value="{{ old('username') }}"
+                                                                class="form-control
                                                                 @error('username') is-invalid @enderror"
                                                                 name="username" id="username"
-                                                                placeholder="Username">
+                                                                value="{{ old('username') }}" placeholder="Username">
                                                             @error('username')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
