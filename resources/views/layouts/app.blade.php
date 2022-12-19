@@ -1,11 +1,3 @@
-@if (auth()->user()->is_active == false)
-    @php
-        Auth::logout();
-    @endphp
-    <script>
-        window.location.href = '{{ route('login') }}'
-    </script>
-@endif
 @php
     use App\Models\Company;
     $path = Request::path();
