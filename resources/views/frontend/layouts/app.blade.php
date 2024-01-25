@@ -10,16 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Place favicon.png in the root directory -->
-    <link rel="shortcut icon" href="assets/frontend/img/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('') }}assets/frontend/img/favicon.png" type="image/x-icon" />
     <!-- Font Icons css -->
-    <link rel="stylesheet" href="assets/frontend/css/font-icons.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/frontend/css/font-icons.css">
     <!-- plugins css -->
-    <link rel="stylesheet" href="assets/frontend/css/plugins.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/frontend/css/plugins.css">
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="assets/frontend/css/style.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/frontend/css/style.css">
     <!-- Responsive css -->
-    <link rel="stylesheet" href="assets/frontend/css/responsive.css">
-    <link rel="stylesheet" href="assets/frontend/toastr.min.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/frontend/css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/frontend/toastr.min.css">
     <style>
         .has-errors {
             border-color: red;
@@ -39,7 +39,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="site-logo">
-                                <a href="{{ route('welcome') }}"><img src="{{ asset('assets/frontend/img') }}/logo.png" alt="Logo"></a>
+                                <a href="{{ route('welcome') }}"><img src="{{ asset('assets/frontend/img') }}/logo.png"
+                                        alt="Logo"></a>
                             </div>
                         </div>
                         <div class="col header-contact-serarch-column d-none d-xl-block">
@@ -75,7 +76,8 @@
                                         <!-- ltn__currency-menu -->
                                         <div class="ltn__drop-menu ltn__currency-menu">
                                             <ul>
-                                                <li><a href="#" class="dropdown-toggle"><span class="active-currency">USD</span></a>
+                                                <li><a href="#" class="dropdown-toggle"><span
+                                                            class="active-currency">USD</span></a>
                                                     <ul>
                                                         <li><a href="login.html">USD - US Dollar</a></li>
                                                         <li><a href="wishlist.html">CAD - Canada Dollar</a></li>
@@ -101,7 +103,8 @@
                                             </div>
                                             <div class="header-search-1-form">
                                                 <form id="#" method="get" action="#">
-                                                    <input type="text" name="search" value="" placeholder="Search here..." />
+                                                    <input type="text" name="search" value=""
+                                                        placeholder="Search here..." />
                                                     <button type="submit">
                                                         <span><i class="icon-magnifier"></i></span>
                                                     </button>
@@ -126,28 +129,33 @@
                                         </div>
                                     </li>
                                     @if (auth()->user())
-                                    <li>
-                                        <!-- mini-cart 2 -->
-                                        <div class="mini-cart-icon mini-cart-icon-2">
-                                            <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
-                                                <span class="mini-cart-icon">
-                                                    <i class="icon-handbag"></i>
-                                                    <sup>{{count($transaction)}}</sup>
-                                                </span>
-                                                <h6><span class="ltn__secondary-color">
-                                                        {{ auth()->user()->display_name }}</span></h6>
-                                            </a>
-                                        </div>
-                                    </li>
+                                        <li>
+                                            <!-- mini-cart 2 -->
+                                            <div class="mini-cart-icon mini-cart-icon-2">
+                                                <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
+                                                    <span class="mini-cart-icon">
+                                                        <i class="icon-handbag"></i>
+                                                        <sup>{{ count($transaction) }}</sup>
+                                                    </span>
+                                                    <h6><span class="ltn__secondary-color">
+                                                            {{ auth()->user()->display_name }}</span></h6>
+                                                </a>
+                                            </div>
+                                        </li>
                                     @endif
                                     <li>
                                         <!-- Mobile Menu Button -->
                                         <div class="mobile-menu-toggle d-lg-none">
                                             <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
                                                 <svg viewBox="0 0 800 600">
-                                                    <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
+                                                    <path
+                                                        d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
+                                                        id="top"></path>
                                                     <path d="M300,320 L540,320" id="middle"></path>
-                                                    <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) ">
+                                                    <path
+                                                        d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
+                                                        id="bottom"
+                                                        transform="translate(480, 320) scale(1, -1) translate(-480, -318) ">
                                                     </path>
                                                 </svg>
                                             </a>
@@ -162,13 +170,15 @@
             <!-- ltn__header-middle-area end -->
 
             <!-- header-bottom-area start -->
-            <div class="header-bottom-area ltn__border-top ltn__header-sticky  ltn__sticky-bg-white ltn__primary-bg---- menu-color-white---- d-none d-lg-block">
+            <div
+                class="header-bottom-area ltn__border-top ltn__header-sticky  ltn__sticky-bg-white ltn__primary-bg---- menu-color-white---- d-none d-lg-block">
                 <div class="container">
                     <div class="row">
                         <div class="col header-menu-column justify-content-center">
                             <div class="sticky-logo">
                                 <div class="site-logo">
-                                    <a href="index.html"><img src="{{ asset('assets/frontend/img') }}/logo.png" alt="Logo"></a>
+                                    <a href="index.html"><img src="{{ asset('assets/frontend/img') }}/logo.png"
+                                            alt="Logo"></a>
                                 </div>
                             </div>
                             <div class="header-menu header-menu-2">
@@ -194,61 +204,73 @@
                     <button class="ltn__utilize-close">×</button>
                 </div>
                 @foreach ($transaction as $item)
-                <div class="mini-cart-product-area ltn__scrollbar">
-                    <div class="mini-cart-item clearfix">
-                        <div class="mini-cart-img">
-                            <a href="#"><img src="{{$item->property->car->picture}}" alt="Image"></a>
-                            <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
+                    <div class="mini-cart-product-area ltn__scrollbar">
+                        <div class="mini-cart-item clearfix">
+                            <div class="mini-cart-img">
+                                <a href="#"><img src="{{ $item->property->car->picture }}" alt="Image"></a>
+                                <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
+                            </div>
+                            <div class="mini-cart-info">
+                                <h6><a href="#">{{ $item->property->car->name }}</a></h6>
+                                <span class="mini-cart-quantity">{{ $item->number_of_days }} x Rp.
+                                    {{ number_format($item->price, 2, ',', '.') }}</span>
+                            </div>
                         </div>
-                        <div class="mini-cart-info">
-                            <h6><a href="#">{{$item->property->car->name}}</a></h6>
-                            <span class="mini-cart-quantity">{{$item->number_of_days}} x Rp. {{number_format($item->price,2,',','.')}}</span>
-                        </div>
                     </div>
-                </div>
-                <div class="mini-cart-footer">
-                    @foreach ($item->payment->detail as $row)
-                    @if ($row->midtrans)
-                    <p>Payment Detail</p>
-                    <div class="mini-cart-sub-total">
-                        <h5>Nominal : <span class="text-secondary text-sm">Rp. {{number_format($row->midtrans->gross_amount,2,',','.')}}</span></h5>
+                    <div class="mini-cart-footer">
+                        @foreach ($item->payment->detail as $row)
+                            @if ($row->midtrans)
+                                <p>Payment Detail</p>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Nominal : <span class="text-secondary text-sm">Rp.
+                                            {{ number_format($row->midtrans->gross_amount, 2, ',', '.') }}</span></h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Bank Transfer : <span class="text-secondary text-sm"
+                                            style="text-transform: uppercase">{{ $row->midtrans->bank }}</span></h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>VA Number : <span
+                                            class="text-secondary text-sm">{{ $row->midtrans->va_number }}</span></h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Transaction Status : <span
+                                            class="text-secondary text-sm">{{ $row->midtrans->transaction_status }}</span>
+                                    </h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Expired : <span
+                                            class="text-secondary text-sm">{{ $row->midtrans->expire_time }}</span>
+                                    </h5>
+                                </div>
+                            @else
+                                <div class="mini-cart-sub-total">
+                                    <h5>Subtotal: <span>Rp. {{ number_format($row->nominal, 2, ',', '.') }}</span></h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Payment Type: <span class="text-secondary">{{ $item->payment->type }}</span>
+                                    </h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Status Payment: <span
+                                            class="text-{{ $row->status == 'paid' ? 'success' : 'danger' }}">{{ $row->status }}</span>
+                                    </h5>
+                                </div>
+                                <div class="mini-cart-sub-total">
+                                    <h5>Note: <span class="text-secondary text-sm">{{ $row->note }}</span></h5>
+                                </div>
+                                @if ($item->payment->type == 'payment gateway')
+                                    <div class="btn-wrapper">
+                                        <a href="{{ route('frontend.pay', $row->id) }}"
+                                            class="theme-btn-1 btn btn-effect-1">Pay Now</a>
+                                    </div>
+                                @endif
+                            @endif
+                        @endforeach
+                        <br>
+                        <br>
+                        <p>Click pay to make payment</p>
                     </div>
-                    <div class="mini-cart-sub-total">
-                        <h5>Bank Transfer : <span class="text-secondary text-sm" style="text-transform: uppercase">{{$row->midtrans->bank}}</span></h5>
-                    </div>
-                    <div class="mini-cart-sub-total">
-                        <h5>VA Number : <span class="text-secondary text-sm">{{$row->midtrans->va_number}}</span></h5>
-                    </div>
-                    <div class="mini-cart-sub-total">
-                        <h5>Transaction Status : <span class="text-secondary text-sm">{{$row->midtrans->transaction_status}}</span></h5>
-                    </div>
-                    <div class="mini-cart-sub-total">
-                        <h5>Expired : <span class="text-secondary text-sm">{{$row->midtrans->expire_time}}</span></h5>
-                    </div>
-                    @else
-                    <div class="mini-cart-sub-total">
-                        <h5>Subtotal: <span>Rp. {{number_format($row->nominal,2,',','.')}}</span></h5>
-                    </div>
-                    <div class="mini-cart-sub-total">
-                        <h5>Payment Type: <span class="text-secondary">{{$item->payment->type}}</span></h5>
-                    </div>
-                    <div class="mini-cart-sub-total">
-                        <h5>Status Payment: <span class="text-{{$row->status == 'paid' ? 'success' : 'danger'}}">{{$row->status}}</span></h5>
-                    </div>
-                    <div class="mini-cart-sub-total">
-                        <h5>Note: <span class="text-secondary text-sm">{{$row->note}}</span></h5>
-                    </div>
-                    @if ($item->payment->type=='payment gateway')
-                    <div class="btn-wrapper">
-                        <a href="{{route('frontend.pay',$row->id)}}" class="theme-btn-1 btn btn-effect-1">Pay Now</a>
-                    </div>
-                    @endif
-                    @endif
-                    @endforeach
-                    <br>
-                    <br>
-                    <p>Click pay to make payment</p>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -368,7 +390,8 @@
                                     </ul>
                                 </div>
                                 <div class="footer-payment-img">
-                                    <img src="{{ asset('assets/frontend/img') }}/icons/payment-6.png" alt="Payment Image">
+                                    <img src="{{ asset('assets/frontend/img') }}/icons/payment-6.png"
+                                        alt="Payment Image">
                                 </div>
                             </div>
                         </div>
@@ -396,11 +419,14 @@
                                 </div>
                                 <div class="ltn__social-media ">
                                     <ul>
-                                        <li><a href="#" title="Facebook"><i class="icon-social-facebook"></i></a></li>
+                                        <li><a href="#" title="Facebook"><i
+                                                    class="icon-social-facebook"></i></a></li>
                                         <li><a href="#" title="Twitter"><i class="icon-social-twitter"></i></a>
                                         </li>
-                                        <li><a href="#" title="Pinterest"><i class="icon-social-pinterest"></i></a></li>
-                                        <li><a href="#" title="Instagram"><i class="icon-social-instagram"></i></a></li>
+                                        <li><a href="#" title="Pinterest"><i
+                                                    class="icon-social-pinterest"></i></a></li>
+                                        <li><a href="#" title="Instagram"><i
+                                                    class="icon-social-instagram"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -448,7 +474,8 @@
                                         <div class="col-12">
                                             <div class="modal-add-to-cart-content clearfix" id="data-modal-body">
                                                 <div class="modal-product-img">
-                                                    <img src="{{ asset('assets/frontend/img') }}/product/1.png" alt="#">
+                                                    <img src="{{ asset('assets/frontend/img') }}/product/1.png"
+                                                        alt="#">
                                                 </div>
                                                 <div class="modal-product-info">
                                                     <h5><a href="product-details.html">Heart's Desire</a></h5>
@@ -457,14 +484,16 @@
                                                     <div class="btn-wrapper">
                                                         <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View
                                                             Cart</a>
-                                                        <a href="checkout.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                                                        <a href="checkout.html"
+                                                            class="theme-btn-2 btn btn-effect-2">Checkout</a>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- additional-info -->
                                             <div class="additional-info d-none--">
                                                 <div class="payment-method">
-                                                    <img src="{{ asset('assets/frontend/img') }}/icons/payment.png" alt="#">
+                                                    <img src="{{ asset('assets/frontend/img') }}/icons/payment.png"
+                                                        alt="#">
                                                 </div>
                                             </div>
                                         </div>
@@ -494,7 +523,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="modal-product-img">
-                                                <img src="{{ asset('assets/frontend/img') }}/product/7.png" alt="#">
+                                                <img src="{{ asset('assets/frontend/img') }}/product/7.png"
+                                                    alt="#">
                                             </div>
                                             <div class="modal-product-info">
                                                 <h5><a href="product-details.html">Brake Conversion Kit</a></h5>
@@ -510,7 +540,8 @@
                                                 <p>We want to give you <b>10% discount</b> for your first order, <br>
                                                     Use discount code at checkout</p>
                                                 <div class="payment-method">
-                                                    <img src="{{ asset('assets/frontend/img') }}/icons/payment.png" alt="#">
+                                                    <img src="{{ asset('assets/frontend/img') }}/icons/payment.png"
+                                                        alt="#">
                                                 </div>
                                             </div>
                                         </div>
@@ -542,7 +573,7 @@
     <script src="{{ asset('assets/frontend/js/plugins.js') }}"></script>
     <!-- Main JS -->
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
-    <script src="{{asset('assets/frontend/toastr.min.js')}}"></script>
+    <script src="{{ asset('assets/frontend/toastr.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             // modal on Checkout
@@ -569,14 +600,14 @@
                                                                 <label>Start Date</label>
                                                                 <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" required />
                                                                 @error('start_date')
-                                                                    <div class="invalid-feedback">{{$message}}</div>
+                                                                    <div class="invalid-feedback">{{ $message }}</div>
                                                                 @enderror
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>End Date</label>
                                                                 <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="end_date"  required />
                                                                 @error('end_date')
-                                                                    <div class="invalid-feedback">{{$message}}</div>
+                                                                    <div class="invalid-feedback">{{ $message }}</div>
                                                                 @enderror
                                                             </div>
                                                             <br>
@@ -603,7 +634,7 @@
                 let fuel = $(target).data('fuel');
                 let seat_capacity = $(target).data('seat_capacity');
                 console.log(id)
-                let route = "{{route('product.detail','__row')}}"
+                let route = "{{ route('product.detail', '__row') }}"
                 route = route.replace('__row', id)
                 let html = `
                 <div class="ltn__quick-view-modal-inner">
@@ -693,21 +724,21 @@
         })
     </script>
     @if ($message = Session::get('message'))
-    <script>
-        toastr.info('{{$message}}')
-    </script>
+        <script>
+            toastr.info('{{ $message }}')
+        </script>
     @endif
 
     @if ($message = Session::get('success'))
-    <script>
-        toastr.success('{{$message}}')
-    </script>
+        <script>
+            toastr.success('{{ $message }}')
+        </script>
     @endif
 
     @if ($message = Session::get('error'))
-    <script>
-        toastr.error('{{$message}}')
-    </script>
+        <script>
+            toastr.error('{{ $message }}')
+        </script>
     @endif
 
 </body>
