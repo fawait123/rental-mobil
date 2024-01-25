@@ -89,13 +89,13 @@
                                             order</button>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <!-- <div class="col-lg-12">
                                     <div class="btn-wrapper mt-0">
                                         <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Send
                                             Message</button>
                                     </div>
                                     <p class="form-messege mb-0 mt-20"></p>
-                                </div>
+                                </div> -->
                             </div>
                         </form>
                     </div>
