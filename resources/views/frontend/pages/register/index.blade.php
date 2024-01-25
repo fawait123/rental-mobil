@@ -113,9 +113,9 @@
                                                                 class="form-control @error('identity_type') is-invalid @enderror"
                                                                 id="identitiy_type">
                                                                 <option value="">pilih</option>
-                                                                <option value="ktp">KTP</option>
-                                                                <option value="sim">SIM</option>
-                                                                <option value="passport">PASSPORT</option>
+                                                                <option value="ktp" {{ old('identity_type') == "ktp" ? "selected":""}}>KTP</option>
+                                                                <option value="sim"  {{ old('identity_type') == "sim" ? "selected":""}}>SIM</option>
+                                                                <option value="passport"  {{ old('identity_type') == "passport" ? "selected":""}}>PASSPORT</option>
                                                             </select>
                                                             @error('identity_type')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -147,8 +147,8 @@
                                                             <select name="gender" id="gender"
                                                                 class="form-control @error('gender') is-invalid @enderror">
                                                                 <option value="">pilih</option>
-                                                                <option value="laki-laki">Laki Laki</option>
-                                                                <option value="perempuan">Perempuan</option>
+                                                                <option value="laki-laki"  {{ old('gender') == "laki-laki" ? "selected":""}}>Laki Laki</option>
+                                                                <option value="perempuan"  {{ old('gender') == "perempuan" ? "selected":""}}>Perempuan</option>
                                                             </select>
                                                             @error('gender')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -240,7 +240,7 @@
                                                         <div class="form-group mb-20">
                                                             <label for="address">Address</label>
                                                             <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" cols="30"
-                                                                rows="10"></textarea>
+                                                                rows="10">{{old('address')}}</textarea>
                                                             @error('address')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror
