@@ -21,7 +21,8 @@
                                                             src="{{ $item->property->car->picture }}" alt="#"></a>
                                                 </td>
                                                 <td class="cart-product-info">
-                                                    <h4><a href="product-details.html">{{ $item->property->car->name }}</h4>
+                                                    <h4><a href="{{ route('product.detail', $item->property->id ?? 0) }}">{{ $item->property->car->name }}
+                                                    </h4>
                                                 </td>
                                                 <td class="cart-product-price">
                                                     Rp. {{ number_format($item->property->price, 2, ',', '.') }}</td>

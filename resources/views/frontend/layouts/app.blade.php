@@ -1,16 +1,26 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 
+
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Fiama - Home</title>
+    <title>EasyCarRent -
+        @if (request()->path() == '/')
+            {{ 'Home' }}
+        @else
+            @foreach (explode('/', request()->path()) as $item)
+                {{ ucfirst($item) }}
+            @endforeach
+        @endif
+    </title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Place favicon.png in the root directory -->
-    <link rel="shortcut icon" href="{{ asset('') }}assets/frontend/img/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('') }}logo.png" type="image/x-icon" />
     <!-- Font Icons css -->
     <link rel="stylesheet" href="{{ asset('') }}assets/frontend/css/font-icons.css">
     <!-- plugins css -->
@@ -39,7 +49,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="site-logo">
-                                <a href="{{ route('welcome') }}"><img src="{{ asset('assets/frontend/img') }}/logo.png"
+                                <a href="{{ route('welcome') }}"><img src="{{ asset('') }}logo.png" width="60px"
                                         alt="Logo"></a>
                             </div>
                         </div>
@@ -282,66 +292,18 @@
         <footer class="ltn__footer-area ">
             <div class="footer-top-area  section-bg-5">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-xl-2 col-md-6 col-sm-6 col-12">
-                            <div class="footer-widget footer-menu-widget clearfix">
-                                <h4 class="footer-title">My Accoout</h4>
-                                <div class="footer-menu">
-                                    <ul>
-                                        <li><a href="account.html">My account</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="contact.html">Contact us</a></li>
-                                        <li><a href="cart.html">Shopping Cart</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row justify-content-between">
                         <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                             <div class="footer-widget footer-menu-widget clearfix">
                                 <h4 class="footer-title">Quick Links</h4>
                                 <div class="footer-menu">
-                                    <ul>
-                                        <li><a href="locations.html">Store Location</a></li>
-                                        <li><a href="order-tracking.html">Orders Tracking</a></li>
-                                        <li><a href="product-details.html">Size Guide</a></li>
-                                        <li><a href="account.html">My account</a></li>
-                                        <li><a href="faq.html">FAQs</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-md-6 col-sm-6 col-12">
-                            <div class="footer-widget footer-menu-widget clearfix">
-                                <h4 class="footer-title">Information</h4>
-                                <div class="footer-menu">
-                                    <ul>
-                                        <li><a href="contact.html">Privacy Page</a></li>
-                                        <li><a href="about.html">About us</a></li>
-                                        <li><a href="contact.html">Careers</a></li>
-                                        <li><a href="faq.html">Delivery Inforamtion</a></li>
-                                        <li><a href="contact.html">Term & Conditions</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-md-6 col-sm-6 col-12">
-                            <div class="footer-widget footer-menu-widget clearfix">
-                                <h4 class="footer-title">Customer Service</h4>
-                                <div class="footer-menu">
-                                    <ul>
-                                        <li><a href="product-details.html">Shipping Policy</a></li>
-                                        <li><a href="contact.html">Help & Contact Us</a></li>
-                                        <li><a href="account.html">Returns & Refunds</a></li>
-                                        <li><a href="shop.html">Online Stores</a></li>
-                                        <li><a href="contact.html">Terms and Conditions</a></li>
-                                    </ul>
+                                    @include('frontend.layouts.navigation')
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-md-6 col-sm-6 col-12">
                             <div class="footer-widget footer-about-widget">
-                                <h4 class="footer-title">About Our Shop</h4>
+                                <h4 class="footer-title">About Me</h4>
                                 <div class="footer-logo d-none">
                                     <div class="site-logo">
                                         <img src="{{ asset('assets/frontend/img') }}/logo.png" alt="Logo">
@@ -404,7 +366,7 @@
                         <div class="col-md-6 col-12">
                             <div class="footer-copyright-left">
                                 <div class="ltn__copyright-design clearfix">
-                                    <p>&copy; <span class="current-year"></span> - Just For You</p>
+                                    <p>&copy; <span class="current-year"></span> - EasyCarRent</p>
                                 </div>
                             </div>
                         </div>
