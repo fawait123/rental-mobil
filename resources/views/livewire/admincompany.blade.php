@@ -83,7 +83,7 @@
                                                                 <h6>{{ $row->name }}</h6>
                                                             </a>
                                                             <p class="d-block mb-0">
-                                                                {{ $row->owner->name }}
+                                                                {{ $row->owner->name ?? null }}
                                                             </p>
                                                         </div>
                                                     </div>
