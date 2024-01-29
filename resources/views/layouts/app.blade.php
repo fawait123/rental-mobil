@@ -11,7 +11,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>StrikingDash</title>
+    <title>EasyCarRent -
+        @if (request()->path() == '/')
+            {{ 'Home' }}
+        @else
+            @foreach (explode('/', request()->path()) as $item)
+                {{ ucfirst($item) }}
+            @endforeach
+        @endif
+    </title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -56,7 +64,7 @@
 
     <!-- endinject -->
 
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/backend/img') }}/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('') }}logo.png">
     <style>
         iframe {
             width: 100%;
@@ -84,9 +92,9 @@
             <div class="navbar-left">
                 <a href="" class="sidebar-toggle">
                     <img class="svg" src="{{ asset('assets/backend/img') }}/svg/bars.svg" alt="img"></a>
-                <a class="navbar-brand" href="#"><img class="dark"
-                        src="{{ asset('assets/backend/img') }}/logo_dark.png" alt="svg"><img class="light"
-                        src="{{ asset('assets/backend/img') }}/logo_white.png" alt="img"></a>
+                <a class="navbar-brand" href="#"><img class="dark" src="{{ asset('') }}/logo.png"
+                        width="40px" alt="svg"><img class="light" src="{{ asset('') }}/logo.png"
+                        alt="img" width="40px"></a>
                 {{-- <form action="/" class="search-form">
                     <span data-feather="search"></span>
                     <input class="form-control mr-sm-2 box-shadow-none" type="text" placeholder="Search...">
@@ -108,7 +116,7 @@
                         </form>
                     </li>
                     <!-- ends: nav-message -->
-                    <li class="nav-notification">
+                    {{-- <li class="nav-notification">
                         <div class="dropdown-custom">
                             <a href="javascript:;" class="nav-item-toggle">
                                 <span data-feather="bell"></span></a>
@@ -198,7 +206,7 @@
                                 <a href="" class="dropdown-wrapper__more">See all incoming activity</a>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                     <!-- ends: .nav-flag-select -->
                     <li class="nav-author">
                         <div class="dropdown-custom">
@@ -219,7 +227,7 @@
                                 <div class="nav-author__options">
                                     <ul>
                                         <li>
-                                            <a href="">
+                                            <a href="#">
                                                 <span data-feather="user"></span> Profile</a>
                                         </li>
                                     </ul>
