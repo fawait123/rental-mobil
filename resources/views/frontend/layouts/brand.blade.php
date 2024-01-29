@@ -14,8 +14,8 @@
                  <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                      <div class="ltn__product-item text-center">
                          <div class="product-img">
-                             <a href="product-details.html"><img src="{{ $item->property->car->picture }}"
-                                     alt="#"></a>
+                             <a href="{{ route('product.detail', $item->property->id ?? 0) }}"><img
+                                     src="{{ $item->property->car->picture }}" alt="#"></a>
                              <div class="product-badge">
                                  <ul>
                                      <li class="badge-2">{{ $item->property->company->name }}</li>
@@ -74,7 +74,8 @@
                          </div>
                          <div class="product-info">
                              <h2 class="product-title"><a
-                                     href="product-details.html">{{ $item->property->car->name }}</a></h2>
+                                     href="{{ route('product.detail', $item->property->id) }}">{{ $item->property->car->name }}</a>
+                             </h2>
                              <div class="product-price">
                                  <span>Rp. {{ number_format($item->property->price, 2, ',', '.') }}</span>
                                  {{-- <del>$21.00</del> --}}

@@ -272,8 +272,8 @@ font-family: 'Poppins', sans-serif;
     Normalize    071C1F   0E292D
 ---------------------------------------------------- */
 :root {
-  --ltn__primary-color: #565656;
-  --ltn__secondary-color: #009EFF;
+  --ltn__primary-color: #F6B17A;
+  --ltn__secondary-color: #f56607;
   --ltn__heading-color: #010101;
   --ltn__paragraph-color: #000000;
   --ltn__body-color: #666666;

@@ -40,7 +40,7 @@
                                             <div class="col-xl-4 col-sm-6 col-12">
                                                 <div class="ltn__product-item text-center">
                                                     <div class="product-img">
-                                                        <a href="product-details.html"><img
+                                                        <a href="{{ route('product.detail', $row->id) }}"><img
                                                                 src="{{ $row->car->picture }}" alt="#"></a>
                                                         <div class="product-badge">
                                                             <ul>
@@ -99,7 +99,7 @@
                                                     </div>
                                                     <div class="product-info">
                                                         <h2 class="product-title"><a
-                                                                href="product-details.html">{{ $row->car->name }}</a>
+                                                                href="{{ route('product.detail', $row->id) }}">{{ $row->car->name }}</a>
                                                         </h2>
                                                         <div class="product-price">
                                                             <span>Rp.
@@ -123,7 +123,7 @@
                                             <div class="col-lg-12">
                                                 <div class="ltn__product-item">
                                                     <div class="product-img">
-                                                        <a href="product-details.html"><img
+                                                        <a href="{{ route('product.detail', $row->id) }}"><img
                                                                 src="{{ $row->car->picture }}" alt="#"></a>
                                                         <div class="product-badge">
                                                             <ul>
@@ -133,7 +133,7 @@
                                                     </div>
                                                     <div class="product-info">
                                                         <h2 class="product-title"><a
-                                                                href="product-details.html">{{ $row->car->name }}</a>
+                                                                href="{{ route('product.detail', $row->id) }}">{{ $row->car->name }}</a>
                                                         </h2>
                                                         <div class="product-price">
                                                             <span>Rp.

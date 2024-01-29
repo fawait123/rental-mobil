@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>StrikingDash</title>
+    <title>EasyCarRent - Register</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -50,7 +50,7 @@
 
     <!-- endinject -->
 
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/backend/img/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logo.png') }}">
 </head>
 
 <body>
@@ -59,30 +59,7 @@
         <div class="signUP-admin">
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="col-xl-4 col-lg-5 col-md-5 p-0">
-                        <div class="signUP-admin-left position-relative">
-                            <div class="signUP-overlay">
-                                <img class="svg signupTop" src="{{ asset('assets/backend/img/svg') }}/signuptop.svg"
-                                    alt="img" />
-                                <img class="svg signupBottom"
-                                    src="{{ asset('assets/backend/img/svg') }}/signupbottom.svg" alt="img" />
-                            </div>
-                            <div class="signUP-admin-left__content">
-                                <div
-                                    class="text-capitalize mb-md-30 mb-15 d-flex align-items-center justify-content-md-start justify-content-center">
-                                    <a class="wh-36 bg-primary text-white radius-md mr-10 content-center"
-                                        href="index.html">a</a>
-                                    <span class="text-dark">admin</span>
-                                </div>
-                                <h1>Bootstrap 4 React Web Application</h1>
-                            </div>
-                            <div class="signUP-admin-left__img">
-                                <img class="img-fluid svg"
-                                    src="{{ asset('assets/backend/img/svg') }}/signupIllustration.svg"
-                                    alt="img" />
-                            </div>
-                        </div>
-                    </div>
+                    @include('auth.left')
                     <div class="col-xl-8 col-lg-7 col-md-7 col-sm-8">
                         <div class="signUp-admin-right  p-md-40 p-10">
                             <div
@@ -113,9 +90,15 @@
                                                                 class="form-control @error('identity_type') is-invalid @enderror"
                                                                 id="identitiy_type">
                                                                 <option value="">pilih</option>
-                                                                <option value="ktp" {{ old('identity_type') == "ktp" ? "selected":""}}>KTP</option>
-                                                                <option value="sim"  {{ old('identity_type') == "sim" ? "selected":""}}>SIM</option>
-                                                                <option value="passport"  {{ old('identity_type') == "passport" ? "selected":""}}>PASSPORT</option>
+                                                                <option value="ktp"
+                                                                    {{ old('identity_type') == 'ktp' ? 'selected' : '' }}>
+                                                                    KTP</option>
+                                                                <option value="sim"
+                                                                    {{ old('identity_type') == 'sim' ? 'selected' : '' }}>
+                                                                    SIM</option>
+                                                                <option value="passport"
+                                                                    {{ old('identity_type') == 'passport' ? 'selected' : '' }}>
+                                                                    PASSPORT</option>
                                                             </select>
                                                             @error('identity_type')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -147,8 +130,12 @@
                                                             <select name="gender" id="gender"
                                                                 class="form-control @error('gender') is-invalid @enderror">
                                                                 <option value="">pilih</option>
-                                                                <option value="laki-laki"  {{ old('gender') == "laki-laki" ? "selected":""}}>Laki Laki</option>
-                                                                <option value="perempuan"  {{ old('gender') == "perempuan" ? "selected":""}}>Perempuan</option>
+                                                                <option value="laki-laki"
+                                                                    {{ old('gender') == 'laki-laki' ? 'selected' : '' }}>
+                                                                    Laki Laki</option>
+                                                                <option value="perempuan"
+                                                                    {{ old('gender') == 'perempuan' ? 'selected' : '' }}>
+                                                                    Perempuan</option>
                                                             </select>
                                                             @error('gender')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -240,7 +227,7 @@
                                                         <div class="form-group mb-20">
                                                             <label for="address">Address</label>
                                                             <textarea name="address" id="address" class="form-control @error('address') is-invalid @enderror" cols="30"
-                                                                rows="10">{{old('address')}}</textarea>
+                                                                rows="10">{{ old('address') }}</textarea>
                                                             @error('address')
                                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                             @enderror

@@ -16,7 +16,7 @@
                             </div>
                             <div class="card-body px-20 pb-25 pt-20">
                                 <div class="product-item__body text-capitalize">
-                                    <a href="product-details.html">
+                                    <a href="{{ route('product.detail', $item->id) }}">
                                         <h6 class="card-title">{{ $item->car->name }}</h6>
                                     </a>
                                     <div class="d-flex align-items-center mb-10 flex-wrap">
