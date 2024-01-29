@@ -18,16 +18,16 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $company = Company::with('owner')->where('user_id',auth()->user()->id)->first();
+        $company = Company::with('owner')->where('user_id', auth()->user()->id)->first();
         $brand = Brand::get();
         $type = Type::get();
-        $transaction = Transaction::where('company_id',$company->id)->where('status','completed')->get();
-        return view('pages.masterdata.company.index',[
-            'company'=>$company,
-            'count_car'=>Property::where('company_id',$company ? $company->id : null)->count(),
-            'count_transaction'=>count($transaction),
-            'count_income'=> collect($transaction)->sum('total_price'),
-            'property'=>Property::with(['car.brand','car.type'])->where('company_id',$company ? $company->id : null)->get()
+        $transaction = Transaction::where('company_id', $company->id ?? null)->where('status', 'completed')->get();
+        return view('pages.masterdata.company.index', [
+            'company' => $company,
+            'count_car' => Property::where('company_id', $company ? $company->id : null)->count(),
+            'count_transaction' => count($transaction),
+            'count_income' => collect($transaction)->sum('total_price'),
+            'property' => Property::with(['car.brand', 'car.type'])->where('company_id', $company ? $company->id : null)->get()
         ]);
     }
 
@@ -50,24 +50,24 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required|unique:companies,name',
-            'email'=>'required|unique:companies,email',
-            'telp'=>'required|unique:companies,telp',
-            'picture'=>'required',
-            'address'=>'required',
-            'location'=>'required',
+            'name' => 'required|unique:companies,name',
+            'email' => 'required|unique:companies,email',
+            'telp' => 'required|unique:companies,telp',
+            'picture' => 'required',
+            'address' => 'required',
+            'location' => 'required',
         ]);
 
         Company::create([
-            'name'=>$request->name,
-            'user_id'=>auth()->user()->id,
-            'email'=>$request->email,
-            'telp'=>$request->telp,
-            'picture'=>$request->picture,
-            'address'=>$request->address,
-            'location'=>$request->location
+            'name' => $request->name,
+            'user_id' => auth()->user()->id,
+            'email' => $request->email,
+            'telp' => $request->telp,
+            'picture' => $request->picture,
+            'address' => $request->address,
+            'location' => $request->location
         ]);
-        return redirect()->route('company.index')->with(['success'=>'Create company successfully']);
+        return redirect()->route('company.index')->with(['success' => 'Create company successfully']);
     }
 
     /**
@@ -89,10 +89,10 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        if($company){
-            return view('pages.masterdata.company.form',[
-                'id'=>$company->id,
-                'company'=>$company
+        if ($company) {
+            return view('pages.masterdata.company.form', [
+                'id' => $company->id,
+                'company' => $company
             ]);
         }
 
@@ -109,11 +109,11 @@ class CompanyController extends Controller
     public function update(Request $request, Company $company)
     {
         $request->validate([
-            'name'=>'required',
+            'name' => 'required',
         ]);
 
         $company->update($request->all());
-        return redirect()->route('company.index')->with(['success'=>'Update company successfully']);
+        return redirect()->route('company.index')->with(['success' => 'Update company successfully']);
     }
 
     /**
@@ -124,9 +124,9 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        if($company){
+        if ($company) {
             $company->delete();
-            return redirect()->route('company.index')->with(['success'=>'Delete company successfully']);
+            return redirect()->route('company.index')->with(['success' => 'Delete company successfully']);
         }
 
         return abort(404);
@@ -135,84 +135,84 @@ class CompanyController extends Controller
     public function cart(Request $request)
     {
         $periode = $this->periode();
-       if($request->type=='transaction'){
-        $data = [];
-        $company = Company::where('user_id',auth()->user()->id)->first();
-        foreach($periode as $p){
-            array_push($data,[
-                'count'=>Transaction::where('company_id',$company->id)->whereBetween('start_order',[date('Y').$p['code'].'01',date('Y').$p['code'].'31'])->count(),
-                'month'=>$p['name']
-            ]);
+        if ($request->type == 'transaction') {
+            $data = [];
+            $company = Company::where('user_id', auth()->user()->id)->first();
+            foreach ($periode as $p) {
+                array_push($data, [
+                    'count' => Transaction::where('company_id', $company->id)->whereBetween('start_order', [date('Y') . $p['code'] . '01', date('Y') . $p['code'] . '31'])->count(),
+                    'month' => $p['name']
+                ]);
+            }
+
+            return $data;
         }
 
-        return $data;
-       }
+        if ($request->type == 'income') {
+            $data = [];
+            $company = Company::where('user_id', auth()->user()->id)->first();
+            foreach ($periode as $p) {
+                $transaction = Transaction::where('company_id', $company->id)->where('status', 'completed')->whereBetween('start_order', [date('Y') . $p['code'] . '01', date('Y') . $p['code'] . '31'])->get();
+                array_push($data, [
+                    'count' => collect($transaction)->sum('total_price'),
+                    'month' => $p['name']
+                ]);
+            }
 
-       if($request->type=='income'){
-        $data = [];
-        $company = Company::where('user_id',auth()->user()->id)->first();
-        foreach($periode as $p){
-            $transaction = Transaction::where('company_id',$company->id)->where('status','completed')->whereBetween('start_order',[date('Y').$p['code'].'01',date('Y').$p['code'].'31'])->get();
-            array_push($data,[
-                'count'=>collect($transaction)->sum('total_price'),
-                'month'=>$p['name']
-            ]);
+            return $data;
         }
-
-        return $data;
-       }
     }
 
     public function periode()
     {
         return [
             [
-                "name"=>"Jan",
-                "code"=>"01"
+                "name" => "Jan",
+                "code" => "01"
             ],
             [
-                "name"=>"Feb",
-                "code"=>"02"
+                "name" => "Feb",
+                "code" => "02"
             ],
             [
-                "name"=>"Mar",
-                "code"=>"03"
+                "name" => "Mar",
+                "code" => "03"
             ],
             [
-                "name"=>"Apr",
-                "code"=>"04"
+                "name" => "Apr",
+                "code" => "04"
             ],
             [
-                "name"=>"Mei",
-                "code"=>"05"
+                "name" => "Mei",
+                "code" => "05"
             ],
             [
-                "name"=>"Jun",
-                "code"=>"06"
+                "name" => "Jun",
+                "code" => "06"
             ],
             [
-                "name"=>"Jul",
-                "code"=>"07"
+                "name" => "Jul",
+                "code" => "07"
             ],
             [
-                "name"=>"Agust",
-                "code"=>"08"
+                "name" => "Agust",
+                "code" => "08"
             ],
             [
-                "name"=>"Sept",
-                "code"=>"09"
+                "name" => "Sept",
+                "code" => "09"
             ],
             [
-                "name"=>"Okt",
-                "code"=>"10"
+                "name" => "Okt",
+                "code" => "10"
             ],
             [
-                "name"=>"Nov",
-                "code"=>"11"
+                "name" => "Nov",
+                "code" => "11"
             ],
             [
-                "name"=>"Des",
-                "code"=>"12"
+                "name" => "Des",
+                "code" => "12"
             ]
         ];
     }
