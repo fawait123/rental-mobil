@@ -23,7 +23,7 @@ class WelcomeController extends Controller
         $transaction = [];
         if (auth()->user()) {
             $customer = Customer::where('user_id', auth()->user()->id)->first();
-            $transaction = Transaction::with(['property.car', 'payment.detail.midtrans'])->where('customer_id', $customer->id)->where('status', 'process')->get();
+            $transaction = Transaction::with(['property.car', 'payment.detail.midtrans'])->where('customer_id', $customer ? $customer->id : null)->where('status', 'process')->get();
         }
         return view('frontend.pages.home.index', [
             'banner' => Banner::with(['property.company', 'property.car'])->where('is_show', true)->orderBy('id', 'DESC')->take(5)->get(),
