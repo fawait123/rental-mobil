@@ -561,14 +561,14 @@
                                                             <input type="hidden" name="id" value="${id}" />
                                                             <div class="form-group">
                                                                 <label>Start Date</label>
-                                                                <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" required />
+                                                                <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" min="{{ date('Y-m-d') }}" required />
                                                                 @error('start_date')
                                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                                 @enderror
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>End Date</label>
-                                                                <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="end_date"  required />
+                                                                <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="end_date" min="{{ date('Y-m-d') }}"  required />
                                                                 @error('end_date')
                                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                                 @enderror
