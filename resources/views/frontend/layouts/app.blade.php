@@ -218,7 +218,8 @@
                         <div class="mini-cart-item clearfix">
                             <div class="mini-cart-img">
                                 <a href="#"><img src="{{ $item->property->car->picture }}" alt="Image"></a>
-                                <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
+                                <span class="mini-cart-item-delete" onclick="window.location.href='/'"><i
+                                        class="icon-trash"></i></span>
                             </div>
                             <div class="mini-cart-info">
                                 <h6><a href="#">{{ $item->property->car->name }}</a></h6>
@@ -229,7 +230,7 @@
                     </div>
                     <div class="mini-cart-footer">
                         @foreach ($item->payment->detail as $row)
-                            @if ($row->midtrans)
+                            @if ($row->type == 'payment gateway')
                                 <p>Payment Detail</p>
                                 <div class="mini-cart-sub-total">
                                     <h5>Nominal : <span class="text-secondary text-sm">Rp.
